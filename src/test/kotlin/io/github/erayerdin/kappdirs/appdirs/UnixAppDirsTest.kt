@@ -4,14 +4,16 @@ import io.github.erayerdin.kappdirs.AppDirs
 import org.junit.*
 import org.junit.Assert.assertEquals
 
+internal val originalHome = System.getProperty("user.home")
+internal val osName = System.getProperty("os.name")?.toLowerCase()
+
+internal const val appAuthor = "eray"
+internal const val appName = "foo"
+internal const val appVersion = "0.1.0"
+
 class UnixAppDirsTest {
     companion object {
-        val originalHome = System.getProperty("user.home")
-
         val appDirs: AppDirs = UnixAppDirs()
-        val appAuthor = "eray"
-        val appName = "foo"
-        val appVersion = "0.1.0"
 
         @JvmStatic
         @BeforeClass
@@ -28,8 +30,6 @@ class UnixAppDirsTest {
 
     @Before
     fun setUp() {
-        val osName = System.getProperty("os.name")?.toLowerCase()
-
         if (osName != null) {
             Assume.assumeTrue(!(osName.startsWith("windows") || osName.startsWith("mac")))
         }
