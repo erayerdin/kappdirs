@@ -3,9 +3,6 @@ package io.github.erayerdin.kappdirs.appdirs
 import io.github.erayerdin.kappdirs.AppDirs
 import java.nio.file.Paths
 
-internal val HOME_DIR = System.getProperty("user.home")
-internal val SEPARATOR = System.getProperty("file.separator")
-
 internal class UnixAppDirs: AppDirs {
     override fun getUserDataDir(appName: String, appVersion: String, appAuthor: String, roaming: Boolean): String {
         val path = Paths.get(
