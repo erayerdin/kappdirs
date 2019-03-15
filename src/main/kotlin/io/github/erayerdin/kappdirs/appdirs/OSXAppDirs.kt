@@ -3,7 +3,7 @@ package io.github.erayerdin.kappdirs.appdirs
 import io.github.erayerdin.kappdirs.AppDirs
 import java.nio.file.Paths
 
-class OSXAppDirs: AppDirs {
+internal class OSXAppDirs: AppDirs {
     override fun getUserDataDir(appName: String, appVersion: String, appAuthor: String, roaming: Boolean): String {
         val path = Paths.get(
             HOME_DIR,
