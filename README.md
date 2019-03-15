@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/license-Apache%20License%203.0-cccccc.svg?style=flat-square)](LICENSE.txt)
 [![Telegram](https://img.shields.io/badge/telegram-%40erayerdin-%2332afed.svg?style=flat-square&logo=telegram&logoColor=white)](https://t.me/erayerdin)
 
-[jitpack_url]: https://pypi.org/project/kappdirs/
+[jitpack_url]: https://jitpack.io/#erayerdin/kappdirs
 
 |             | Build | Coverage |
 |-------------|-------|----------|
@@ -17,4 +17,12 @@
 kappdirs is another [appdirs implementation](https://github.com/harawata/appdirs)
 written purely in Kotlin. It has a similar implementation of Java's appdirs.
 
-Currently, it is in development.
+This project is still work in progress.
+
+# Installation
+
+Visit [Jitpack page][jitpack_url] in order to download releases.
+
+# Documentation
+
+Since the project is still in progress, the documentation will be added soon.
