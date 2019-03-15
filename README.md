@@ -9,9 +9,9 @@
 |             | Build (*nix, OS-X) | Build (Windows) | Coverage |
 |-------------|--------------------|-----------------|----------|
 | master      | [![Travis master](https://img.shields.io/travis/com/erayerdin/kappdirs/master.svg?style=flat-square&logo=travis&logoColor=white)][travis_url] | [![AppVeyor branch](https://img.shields.io/appveyor/ci/erayerdin/kappdirs/master.svg?style=flat-square)][appveyor_url] | [![Codecov master](https://img.shields.io/codecov/c/github/erayerdin/kappdirs/master.svg?style=flat-square&logo=codecov&logoColor=white)][codecov_url]      |
-| development | [![Travis (.org) development](https://img.shields.io/travis/com/erayerdin/kappdirs/development.svg?style=flat-square&logo=travis&logoColor=white)][travis_url] | [![AppVeyor branch](https://img.shields.io/appveyor/ci/erayerdin/kappdirs/development.svg?style=flat-square)][appveyor_url] | [![Codecov development](https://img.shields.io/codecov/c/github/erayerdin/kappdirs/development.svg?style=flat-square&logo=codecov&logoColor=white)][codecov_url] |
+| development | [![Travis development](https://img.shields.io/travis/com/erayerdin/kappdirs/development.svg?style=flat-square&logo=travis&logoColor=white)][travis_url] | [![AppVeyor branch](https://img.shields.io/appveyor/ci/erayerdin/kappdirs/development.svg?style=flat-square)][appveyor_url] | [![Codecov development](https://img.shields.io/codecov/c/github/erayerdin/kappdirs/development.svg?style=flat-square&logo=codecov&logoColor=white)][codecov_url] |
 
-[travis_url]: https://travis-ci.org/erayerdin/kappdirs
+[travis_url]: https://travis-ci.com/erayerdin/kappdirs
 [appveyor_url]: https://ci.appveyor.com/project/erayerdin/kappdirs
 [codecov_url]: https://codecov.io/gh/erayerdin/kappdirs
 
