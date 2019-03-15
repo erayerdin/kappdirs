@@ -1,5 +1,9 @@
 language: java
 dist: xenial
+os:
+  - linux
+  - windows
+  - osx
 
 jobs:
   include:
