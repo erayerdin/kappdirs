@@ -1,0 +1,2 @@
+ignore:
+  - "src/main/kotlin/io/github/erayerdin/kappdirs/appdirs/OSXAppDirs.kt"
