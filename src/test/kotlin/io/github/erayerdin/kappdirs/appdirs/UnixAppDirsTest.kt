@@ -3,6 +3,7 @@ package io.github.erayerdin.kappdirs.appdirs
 import io.github.erayerdin.kappdirs.AppDirs
 import org.junit.*
 import org.junit.Assert.assertEquals
+import kotlin.test.assertNotNull
 
 internal val originalHome = System.getProperty("user.home")
 internal val osName = System.getProperty("os.name")?.toLowerCase()

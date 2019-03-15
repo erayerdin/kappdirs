@@ -2,7 +2,7 @@ package io.github.erayerdin.kappdirs.appdirs
 
 import io.github.erayerdin.kappdirs.AppDirs
 import org.junit.*
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 
 class OSXAppDirsTest {
     companion object {
