@@ -2,10 +2,12 @@ language: java
 
 jobs:
   include:
-    - stage: building
-      os:
-        - linux
-        - osx
+    - stage: building on osx
+      os: osx
+      before_script: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+      script: mvn compile
+    - stage: building on linux
+      os: linux
       before_script: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       script: mvn compile
     - stage: testing on osx
