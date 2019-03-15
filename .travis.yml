@@ -1,12 +1,20 @@
 language: java
-dist: xenial
 
 jobs:
   include:
-    - stage: building
+    - stage: building on osx
+      os: osx
       before_script: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       script: mvn compile
-    - stage: testing
+    - stage: building on linux
+      os: linux
+      before_script: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+      script: mvn compile
+    - stage: testing on osx
+      os: osx
+      before_script: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+      script: mvn test
+    - stage: testing on linux
       before_script: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       script: mvn test
       after_success: bash <(curl -s https://codecov.io/bash)
