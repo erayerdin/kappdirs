@@ -5,10 +5,10 @@
 
     <groupId>io.github.erayerdin</groupId>
     <artifactId>kappdirs</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>io.github.erayerdin kappdirs</name>
+    <name>kappdirs</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
