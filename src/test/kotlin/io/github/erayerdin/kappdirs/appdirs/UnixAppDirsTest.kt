@@ -1,10 +1,8 @@
 package io.github.erayerdin.kappdirs.appdirs
 
 import io.github.erayerdin.kappdirs.AppDirs
-import org.junit.AfterClass
+import org.junit.*
 import org.junit.Assert.assertEquals
-import org.junit.BeforeClass
-import org.junit.Test
 
 class UnixAppDirsTest {
     companion object {
@@ -25,6 +23,15 @@ class UnixAppDirsTest {
         @AfterClass
         fun tearDownClass() {
             System.setProperty("user.home", originalHome)
+        }
+    }
+
+    @Before
+    fun setUp() {
+        val osName = System.getProperty("os.name")?.toLowerCase()
+
+        if (osName != null) {
+            Assume.assumeTrue(!(osName.startsWith("windows") || osName.startsWith("mac")))
         }
     }
 
