@@ -72,7 +72,7 @@
 
                 <configuration>
                     <excludes>
-                        <exclude>io/github/erayerdin/kappdirs/appdirs/OSXAppDirs.kt</exclude>
+                        <exclude>src/main/kotlin/io/github/erayerdin/kappdirs/appdirs/OSXAppDirs.kt</exclude>
                     </excludes>
                 </configuration>
 
