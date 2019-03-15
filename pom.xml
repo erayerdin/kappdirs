@@ -70,6 +70,12 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.3</version>
 
+                <configuration>
+                    <excludes>
+                        <exclude>io/github/erayerdin/kappdirs/appdirs/OSXAppDirs.kt</exclude>
+                    </excludes>
+                </configuration>
+
                 <executions>
                     <execution>
                         <goals>
