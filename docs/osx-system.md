@@ -7,7 +7,7 @@ below:
 val appDirs: AppDirs = AppDirsFactory.getInstance()
 val APP_NAME = "myApp"
 val APP_VERSION = "0.1.0"
-val APP_AUTHOR = "myName" // it does not h<username> any effect in Mac OS X
+val APP_AUTHOR = "myName" // it does not have any effect in Mac OS X
 
 val userDataDir: String = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
 // /Users/<username>/Library/Application Support/myApp/0.1.0
