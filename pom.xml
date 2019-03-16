@@ -9,6 +9,22 @@
     <packaging>jar</packaging>
 
     <name>kappdirs</name>
+    <developers>
+        <developer>
+            <id>erayerdin</id>
+            <name>Eray Erdin</name>
+            <email>eraygezer.94@gmail.com</email>
+            <url>https://github.com/erayerdin</url>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/Istanbul</timezone>
+            <properties>
+                <picUrl>https://github.com/erayerdin.png</picUrl>
+            </properties>
+        </developer>
+    </developers>
+
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
