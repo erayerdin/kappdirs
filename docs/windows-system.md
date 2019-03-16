@@ -49,3 +49,24 @@ val siteConfigDir: String = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION, APP_
  >   effect on Windows machines.
  > - Windows system is the only system that uses backward slashes (\\) as
  >   the directory separator.
+
+# What is Roaming?
+
+Since Windows NT 3.1, Windows system uses a concept called *roaming*, which
+moves or copies the content of the related application directory over the
+network to different machines.
+
+The methods below support one extra argument called `roaming`:
+
+ - `getUserDataDir`
+ - `getUserConfigDir`
+
+With `roaming` is `true`, the application directory points at the roaming
+application directory.
+
+However, since this option is not widely used in Windows, it is not activated
+by default. To activate this feature, see [this documentation](https://docs.microsoft.com/en-us/windows-server/storage/folder-redirection/deploy-roaming-user-profiles)
+of Microsoft.
+
+This feature is especially useful for business machines that are connected
+to the same network.
