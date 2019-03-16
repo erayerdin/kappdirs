@@ -51,3 +51,39 @@ one extra argument called `local`, which is`false` by default. As an example:
 val siteDataDir: String = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, APP_AUTHOR, true)
 val siteConfigDir: String = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR, true)
 ```
+
+# The Purpose of Directories
+
+The application directories have different purposes. How they work also
+differs on the operating system your application runs. You can see how they
+differ on operating system sections, yet they also have a common convention
+as well. In this section, we will discuss how they differ in common, but
+keep in mind that these methods are based on a convention, which means you
+can break the conventions any time you want, but it is just easier to keep
+it alive.
+
+## User *versus* Site Methods
+
+The user application directory methods in `kappdirs` are as below:
+
+ - `getUserDataDir`
+ - `getUserConfigDir`
+ - `getUserCacheDir`
+ - `getUserLogDir`
+
+The site application directory methods, on the other hand, are as below:
+
+ - `getSiteDataDir`
+ - `getSiteConfigDir`
+
+User-based methods point at the directories which the user that is running
+your application owns and/or has full access to read/write/execute by
+default. So, naturally and usually, reading from, writing to or executing
+the files in these directories will not create any problem or extra-care
+for your application. You usually need to store data based on a particular
+user in these directories.
+
+On the other hand, site-based methods point at system-wide directories.
+Your user might or might not have specific accesses to these directories.
+You usually need to store system-wide data in these directories which will
+naturally effect the other users in the same machine.
