@@ -62,7 +62,7 @@ keep in mind that these methods are based on a convention, which means you
 can break the conventions any time you want, but it is just easier to keep
 it alive.
 
-## User *versus* Site Methods
+<h2>User <em>versus</em> Site Methods</h2>
 
 The user application directory methods in `kappdirs` are as below:
 
@@ -87,3 +87,69 @@ On the other hand, site-based methods point at system-wide directories.
 Your user might or might not have specific accesses to these directories.
 You usually need to store system-wide data in these directories which will
 naturally effect the other users in the same machine.
+
+<h2>Data <em>versus</em> Config Methods</h2>
+
+The data application directory methods in `kappdirs` are as below:
+
+ - `getUserDataDir`
+ - `getSiteDataDir`
+
+And the config application directory methods are as below:
+
+ - `getUserConfigDir`
+ - `getSiteConfigDir`
+
+The distinction in the names are clear. Data application directories contain
+the data for your application while config directories contain the config
+files.
+
+To give an example, consider a game. In this context, `getUserDataDir`
+method points to the directory where the current user's save files are
+stored while `getUserConfigDir` method points to the directory how the user
+wants the game to behave, like the resolution for the game or user-specific
+control-schemes.
+
+ > <h4>Note</h4>
+ >
+ > Also, in this example, you do not need `getSiteDataDir` or
+ > `getSiteConfigDir` method. You usually do not need to use these methods,
+ > especially in *writing* operations. It is a good practice to write into
+ > these directories on *installation* process of your application and with
+ > *proper permissions* and then, you do *reading* operations from these
+ > directories.
+
+<h2>Cache Method</h2>
+
+Cache directory can be acquired via `getUserCacheDir` method. It is used to
+store the files that is acquired after a heavy operation.
+
+For example, network operations are considered heavy operations since you
+need to write to and read from socket in low level. If your application
+downloads an asset such as an image, a video or an audio from the internet,
+it does not need to download these again in the next operation. Instead, it
+can save these assets into cache directory and read them on.
+
+Another example is where you need to generate an image programmatically.
+Imagine a scenario where you detect the face and properly crop for a
+profile picture. Instead of doing it again and again and wasting CPU
+resources, you can save the image to the cache directory and use it in the
+next run.
+
+Cache directory is only a user directory because users create caches and
+you cannot always rely on caches. For example, if the cached resource that
+your program is looking for is not in its place, you will likely need to
+*redownload* or *regenerate* and, in the end, *recache* your resource.
+
+<h2>Log Method</h2>
+
+Log directory can be acquired via `getUserLogDir` method. It is used to
+dump the logs that your application generates.
+
+Logging is a good practice to debug your application on different machines
+and, in case of an issue, you can easily grab the log files and look for
+the issue.
+
+Log directory is only a user directory. Keep in mind that you might need to
+clear the older logs from time to time in order not to bloat the drive of
+the machine that your application runs on.
