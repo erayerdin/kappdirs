@@ -26,4 +26,4 @@ Visit [Jitpack page][jitpack_url] in order to download releases.
 
 # Documentation
 
-Since the project is still in progress, the documentation will be added soon.
+Check out the documentation [here](http://kappdirs.rtfd.io/).
