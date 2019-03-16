@@ -51,7 +51,7 @@ class WindowsAppDirsTest {
 
     @Test
     fun testRoamingUserDataDir() {
-        val dir = appDirs.getUserDataDir(appName, appVersion, appAuthor)
+        val dir = appDirs.getUserDataDir(appName, appVersion, appAuthor, true)
         assertTrue(dir.startsWith("$systemDrive\\Users\\"))
         assertTrue(dir.endsWith("\\AppData\\Roaming\\eray\\foo\\0.1.0"))
     }
