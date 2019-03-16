@@ -31,6 +31,7 @@ class WindowsAppDirsTest {
 
             println("Local Site Config Dir: ${appDirs.getSiteConfigDir(appName, appVersion, appAuthor, true)}")
             println("Roaming Site Config Dir: ${appDirs.getSiteConfigDir(appName, appVersion, appAuthor)}")
+            println(systemDrive)
         }
     }
 
