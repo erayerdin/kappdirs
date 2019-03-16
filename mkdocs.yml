@@ -1,0 +1,8 @@
+site_name: kappdirs
+site_author: Eray Erdin
+site_url: https://github.com/erayerdin/kappdirs
+theme: readthedocs
+
+nav:
+  - Introduction: index.md
+  - AppDirs Instance: appdirs.md
