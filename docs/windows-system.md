@@ -10,22 +10,22 @@ val APP_VERSION = "0.1.0"
 val APP_AUTHOR = "myName" // or the organization name
 
 val userLocalDataDir: String = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
-// C:\Users\ave\AppData\Local\myName\myApp\0.1.0
+// C:\Users\<username>\AppData\Local\myName\myApp\0.1.0
 
 val userRoamingDataDir: String = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR, roaming = true)
-// C:\Users\ave\AppData\Roaming\myName\myApp\0.1.0
+// C:\Users\<username>\AppData\Roaming\myName\myApp\0.1.0
 
 val userLocalConfigDir: String = appDirs.getUserConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR)
-// C:\Users\ave\AppData\Local\myName\myApp\0.1.0
+// C:\Users\<username>\AppData\Local\myName\myApp\0.1.0
 
 val userRoamingConfigDir: String = appDirs.getUserConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR, roaming = true)
-// C:\Users\ave\AppData\Roaming\myName\myApp\0.1.0
+// C:\Users\<username>\AppData\Roaming\myName\myApp\0.1.0
 
 val userCacheDir: String = appDirs.getUserCacheDir(APP_NAME, APP_VERSION, APP_AUTHOR)
-// C:\Users\ave\AppData\Local\myName\myApp\Cache\0.1.0
+// C:\Users\<username>\AppData\Local\myName\myApp\Cache\0.1.0
 
 val userLogDir: String = appDirs.getUserLogDir(APP_NAME, APP_VERSION, APP_AUTHOR)
-// C:\Users\ave\AppData\Local\myName\myApp\Logs\0.1.0
+// C:\Users\<username>\AppData\Local\myName\myApp\Logs\0.1.0
 
 val siteDataDir: String = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
 // C:\ProgramData\myName\myApp\0.1.0
@@ -47,6 +47,11 @@ val siteConfigDir: String = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION, APP_
  >   `siteConfigDir` above.)
  > - `local` argument on `getSiteDataDir` and `getSiteConfigDir` has no
  >   effect on Windows machines.
+ > - Windows is the only system that utilizes `roaming` argument on
+ >   `getUserDataDir` and `getUserConfigDir` methods.
+ > - `local` argument on `getSiteDataDir` and `getSiteConfigDir` has no effect
+ >   in Windows system.
+ > - Windows is the only system that utilizes `appAuthor` on every method.
  > - Windows system is the only system that uses backward slashes (\\) as
  >   the directory separator.
 
