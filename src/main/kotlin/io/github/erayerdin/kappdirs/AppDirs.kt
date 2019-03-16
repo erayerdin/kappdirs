@@ -1,10 +1,67 @@
 package io.github.erayerdin.kappdirs
 
+/**
+ * An interface for implementing application directories.
+ */
 interface AppDirs {
+    /**
+     * @param appName The name of the application.
+     * @param appVersion The version of the application.
+     * @param appAuthor The author of the application. You can also use your organization's name.
+     * It does not have any effect on Mac OS X, any Unix-based systems or any Linux distributions.
+     * @param roaming Whether to point at roaming folder or not. It has effect only on Windows.
+     * For more information, see [here](https://kappdirs.readthedocs.io/en/latest/windows-system/#what-is-roaming).
+     * @return A directory containing data related to a specific user.
+     */
     fun getUserDataDir(appName: String, appVersion: String, appAuthor: String, roaming: Boolean = false): String
+
+    /**
+     * @param appName The name of the application.
+     * @param appVersion The version of the application.
+     * @param appAuthor The author of the application. You can also use your organization's name.
+     * It does not have any effect on Mac OS X, any Unix-based systems or any Linux distributions.
+     * @param roaming Whether to point at roaming folder or not. It has effect only on Windows.
+     * For more information, see [here](https://kappdirs.readthedocs.io/en/latest/windows-system/#what-is-roaming).
+     * @return A directory containing configuration data of the application related to a specific user.
+     */
     fun getUserConfigDir(appName: String, appVersion: String, appAuthor: String, roaming: Boolean = false): String
+
+    /**
+     * @param appName The name of the application.
+     * @param appVersion The version of the application.
+     * @param appAuthor The author of the application. You can also use your organization's name.
+     * It does not have any effect on Mac OS X, any Unix-based systems or any Linux distributions.
+     * @return A directory containing cache data of the application. It is a user-based directory.
+     */
     fun getUserCacheDir(appName: String, appVersion: String, appAuthor: String): String
+
+    /**
+     * @param appName The name of the application.
+     * @param appVersion The version of the application.
+     * @param appAuthor The author of the application. You can also use your organization's name.
+     * It does not have any effect on Mac OS X, any Unix-based systems or any Linux distributions.
+     * @return A directory containing log files of the application. It is a user-based directory.
+     */
     fun getUserLogDir(appName: String, appVersion: String, appAuthor: String): String
+
+    /**
+     * @param appName The name of the application.
+     * @param appVersion The version of the application.
+     * @param appAuthor The author of the application. You can also use your organization's name.
+     * It does not have any effect on Mac OS X, any Unix-based systems or any Linux distributions.
+     * @param local Whether to choose `/local` directory on Linux systems. It has effect only on
+     * Linux distributions.
+     * @return A directory containing system-wide data of the application.
+     */
     fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String, local: Boolean = false): String
+
+    /**
+     * @param appName The name of the application.
+     * @param appVersion The version of the application.
+     * @param appAuthor The author of the application. You can also use your organization's name.
+     * It does not have any effect on Mac OS X, any Unix-based systems or any Linux distributions.
+     * @param local This does not have any effect on this method.
+     * @return A directory containing system-wide configuration files of the application.
+     */
     fun getSiteConfigDir(appName: String, appVersion: String, appAuthor: String, local: Boolean = false): String
 }
