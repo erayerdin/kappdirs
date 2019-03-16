@@ -9,6 +9,8 @@
     <packaging>jar</packaging>
 
     <name>kappdirs</name>
+    <description>kappdirs is another appdirs implementation written in pure Kotlin.</description>
+    <url>https://github.com/erayerdin/kappdirs</url>
     <developers>
         <developer>
             <id>erayerdin</id>
@@ -24,7 +26,6 @@
             </properties>
         </developer>
     </developers>
-
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
