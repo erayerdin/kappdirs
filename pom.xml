@@ -5,10 +5,35 @@
 
     <groupId>io.github.erayerdin</groupId>
     <artifactId>kappdirs</artifactId>
-    <version>0.1.2-SNAPSHOT</version>
+    <version>0.1.3-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>kappdirs</name>
+    <description>kappdirs is another appdirs implementation written in pure Kotlin.</description>
+    <url>https://github.com/erayerdin/kappdirs</url>
+    <developers>
+        <developer>
+            <id>erayerdin</id>
+            <name>Eray Erdin</name>
+            <email>eraygezer.94@gmail.com</email>
+            <url>https://github.com/erayerdin</url>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/Istanbul</timezone>
+            <properties>
+                <picUrl>https://github.com/erayerdin.png</picUrl>
+            </properties>
+        </developer>
+    </developers>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

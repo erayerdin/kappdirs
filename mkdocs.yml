@@ -1,0 +1,11 @@
+site_name: kappdirs
+site_author: Eray Erdin
+site_url: https://github.com/erayerdin/kappdirs
+theme: readthedocs
+
+nav:
+  - Introduction: index.md
+  - AppDirs Instance: appdirs.md
+  - Windows System: windows-system.md
+  - Mac OS X System: osx-system.md
+  - Unix System: unix-system.md
