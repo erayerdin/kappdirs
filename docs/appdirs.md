@@ -43,6 +43,12 @@ val userDataDir: String = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTH
 val userConfigDir: String = appDirs.getUserConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR, true)
 ```
 
+ > <h4>Note</h4>
+ >
+ > Practically, `roaming` argument only has effect on Windows machines.
+ > To get more information about `roaming`, check out [Windows section]((/windows-system/))
+ > of the documentation.
+
 Also, `getSiteDataDir` and `getSiteConfigDir` methods (last two above) have
 one extra argument called `local`, which is`false` by default. As an example:
 
@@ -51,6 +57,13 @@ one extra argument called `local`, which is`false` by default. As an example:
 val siteDataDir: String = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, APP_AUTHOR, true)
 val siteConfigDir: String = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR, true)
 ```
+
+ > <h4>Note</h4>
+ >
+ > Practically, `local` argument only has effect on [XDG-compliant](http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html)
+ > Unix based or inspired machines (including XDG-compliant Linux).
+ > To get more information about `local`, see [Unix section](/unix-system/)
+ > of the documentation.
 
 # The Purpose of Directories
 
