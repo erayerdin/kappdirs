@@ -19,32 +19,32 @@ object ImplAppDirs: AppDirs {
 class AppDirsTest {
     @Test
     fun testUserDataDir() = assertEquals(
-        "a",
+        Paths.get("/a"),
         ImplAppDirs.getUserDataDir("foo", "0.1.0", "eray")
     )
     @Test
     fun testUserConfigDir() = assertEquals(
-        "b",
+        Paths.get("/b"),
         ImplAppDirs.getUserConfigDir("foo", "0.1.0", "eray")
     )
     @Test
     fun testUserCacheDir() = assertEquals(
-        "c",
+        Paths.get("/c"),
         ImplAppDirs.getUserCacheDir("foo", "0.1.0", "eray")
     )
     @Test
     fun testUserLogDir() = assertEquals(
-        "d",
+        Paths.get("/d"),
         ImplAppDirs.getUserLogDir("foo", "0.1.0", "eray")
     )
     @Test
     fun testSiteDataDir() = assertEquals(
-        "e",
+        Paths.get("/e"),
         ImplAppDirs.getSiteDataDir("foo", "0.1.0", "eray")
     )
     @Test
     fun testSiteConfigDir() = assertEquals(
-        "f",
+        Paths.get("/f"),
         ImplAppDirs.getSiteConfigDir("foo", "0.1.0", "eray")
     )
 }
