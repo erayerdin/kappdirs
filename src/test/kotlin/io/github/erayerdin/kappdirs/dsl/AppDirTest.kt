@@ -21,19 +21,6 @@ class AppDirTest {
         }
     }
 
-    private fun assertReadWriteOperations(dir: File, file: File, create: Boolean = true) {
-        if (create) {
-            dir.mkdirs()
-            file.createNewFile()
-        }
-
-        file.writeText("lorem ipsum")
-        assertTrue(file.exists())
-        assertEquals("lorem ipsum", file.readText())
-
-        file.delete()
-    }
-
     @Test
     fun testUserData() {
         appDir {
@@ -98,4 +85,17 @@ class AppDirTest {
 
     // todo 1 - find a way to test system level dirs
     // it is especially problematic on unix type systems
+
+    private fun assertReadWriteOperations(dir: File, file: File, create: Boolean = true) {
+        if (create) {
+            dir.mkdirs()
+            file.createNewFile()
+        }
+
+        file.writeText("lorem ipsum")
+        assertTrue(file.exists())
+        assertEquals("lorem ipsum", file.readText())
+
+        file.delete()
+    }
 }
