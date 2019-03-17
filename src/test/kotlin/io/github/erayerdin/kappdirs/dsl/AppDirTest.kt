@@ -1,8 +1,13 @@
 package io.github.erayerdin.kappdirs.dsl
 
+import io.github.erayerdin.kappdirs.appdirs.osName
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
+import org.junit.Assume.assumeTrue
 import org.junit.Test
+import java.io.File
+
+//private val osName = System.getProperty("os.name").toLowerCase()
 
 class AppDirTest {
     companion object {
@@ -18,18 +23,37 @@ class AppDirTest {
         }
     }
 
+    private fun assertReadWriteOperations(dir: File, file: File, create: Boolean = true) {
+        if (create) {
+            dir.mkdirs()
+            file.createNewFile()
+        }
+
+        file.writeText("lorem ipsum")
+        assertTrue(file.exists())
+        assertEquals("lorem ipsum", file.readText())
+
+        file.delete()
+    }
+
     @Test
     fun testUserData() {
         appDir {
             userData("bar", "baz.txt") { dir, file ->
-                dir.mkdirs()
-                file.createNewFile()
+                assertReadWriteOperations(dir, file)
+            }
+        }
+    }
 
-                file.writeText("lorem ipsum")
-                assertTrue(file.exists())
-                assertEquals("lorem ipsum", file.readText())
+    @Test
+    fun testUserDataWithRoaming() {
+        if (osName != null) {
+            assumeTrue(osName.startsWith("windows"))
+        }
 
-                file.delete()
+        appDir {
+            userData("bar", "baz.txt", roaming = true) { dir, file ->
+                assertReadWriteOperations(dir, file)
             }
         }
     }
