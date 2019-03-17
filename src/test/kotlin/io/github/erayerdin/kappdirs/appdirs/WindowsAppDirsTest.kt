@@ -23,15 +23,15 @@ class WindowsAppDirsTest {
     @Test
     fun testLocalUserDataDir() {
         val dir = appDirs.getUserDataDir(appName, appVersion, appAuthor)
-        assertTrue(dir.startsWith("$systemDrive\\Users\\"))
-        assertTrue(dir.endsWith("\\AppData\\Local\\eray\\foo\\0.1.0"))
+        assertTrue(dir.toString().startsWith("$systemDrive\\Users\\"))
+        assertTrue(dir.toString().endsWith("\\AppData\\Local\\eray\\foo\\0.1.0"))
     }
 
     @Test
     fun testRoamingUserDataDir() {
         val dir = appDirs.getUserDataDir(appName, appVersion, appAuthor, true)
-        assertTrue(dir.startsWith("$systemDrive\\Users\\"))
-        assertTrue(dir.endsWith("\\AppData\\Roaming\\eray\\foo\\0.1.0"))
+        assertTrue(dir.toString().startsWith("$systemDrive\\Users\\"))
+        assertTrue(dir.toString().endsWith("\\AppData\\Roaming\\eray\\foo\\0.1.0"))
     }
 
     @Test
