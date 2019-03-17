@@ -75,7 +75,7 @@ class WindowsAppDirsTest {
     fun testUserCacheDirWithoutAuthor() {
         val dir = appDirs.getUserCacheDir(appName, appVersion, null)
         assertTrue(dir.toString().startsWith("$systemDrive\\Users"))
-        assertTrue(dir.toString().endsWith("\\AppData\\Local\\eray\\foo\\Cache\\0.1.0"))
+        assertTrue(dir.toString().endsWith("\\AppData\\Local\\foo\\Cache\\0.1.0"))
     }
 
     @Test
