@@ -29,6 +29,11 @@ data class AppDir(
         invokeLambda(realPath, method)
     }
 
+    fun userCache(vararg path: String, method: (dir: File, file: File) -> Unit) {
+        val realPath = appDirs.getUserCacheDir(appName, appVersion, appAuthor).resolve(path)
+        invokeLambda(realPath, method)
+    }
+
     operator fun invoke(method: AppDir.() -> Unit) {
         method(this)
     }

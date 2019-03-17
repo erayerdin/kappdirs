@@ -77,4 +77,13 @@ class AppDirTest {
             }
         }
     }
+
+    @Test
+    fun testUserCache() {
+        appDir {
+            userCache("bar", "baz.txt") { dir, file ->
+                assertReadWriteOperations(dir, file)
+            }
+        }
+    }
 }
