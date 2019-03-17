@@ -11,11 +11,11 @@ Every `AppDirs` instance contains the methods below:
 
 Each method's signature contains the arguments below:
 
-| Name | Type |
-|------|------|
-| appName | String |
-| appVersion | String |
-| appAuthor | String |
+| Name | Type | Default |
+|------|------|---------|
+| appName | String | - |
+| appVersion | String | - |
+| appAuthor | String? | null |
 
 As an example:
 
@@ -25,12 +25,12 @@ val APP_NAME = "myApp"
 val APP_VERSION = "0.1.0"
 val APP_AUTHOR = "myName" // or the organization name
 
-val userDataDir: String = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
-val userConfigDir: String = appDirs.getUserConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR)
-val userCacheDir: String = appDirs.getUserCacheDir(APP_NAME, APP_VERSION, APP_AUTHOR)
-val userLogDir: String = appDirs.getUserLogDir(APP_NAME, APP_VERSION, APP_AUTHOR)
-val siteDataDir: String = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
-val siteConfigDir: String = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val userDataDir: Path = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val userConfigDir: Path = appDirs.getUserConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val userCacheDir: Path = appDirs.getUserCacheDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val userLogDir: Path = appDirs.getUserLogDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val siteDataDir: Path = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val siteConfigDir: Path = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR)
 ```
 
 Apart from the arguments above, `getUserDataDir` and `getUserConfigDir` methods
@@ -39,8 +39,8 @@ default. As an example:
 
 ```kotlin
 // roaming examples
-val userDataDir: String = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR, true)
-val userConfigDir: String = appDirs.getUserConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR, true)
+val userDataDir: Path = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR, true)
+val userConfigDir: Path = appDirs.getUserConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR, true)
 ```
 
  > <h4>Note</h4>
@@ -49,13 +49,12 @@ val userConfigDir: String = appDirs.getUserConfigDir(APP_NAME, APP_VERSION, APP_
  > To get more information about `roaming`, check out [this part](windows-system.md#what-is-roaming)
  > of Windows section of the documentation.
 
-Also, `getSiteDataDir` and `getSiteConfigDir` methods (last two above) have
-one extra argument called `local`, which is`false` by default. As an example:
+Also, `getSiteDataDir` method has one extra argument called `local`, which
+is`false` by default. As an example:
 
 ```kotlin
-// local examples
-val siteDataDir: String = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, APP_AUTHOR, true)
-val siteConfigDir: String = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR, true)
+// local example
+val siteDataDir: Path = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, APP_AUTHOR, true)
 ```
 
  > <h4>Note</h4>

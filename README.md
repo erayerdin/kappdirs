@@ -18,7 +18,7 @@
 kappdirs is another appdirs implementation written purely in Kotlin. It has
 a similar implementation of [harawata's appdirs](https://github.com/harawata/appdirs).
 
-This project is still work in progress.
+This project is on prealpha.
 
 # Installation
 

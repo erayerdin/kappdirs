@@ -7,27 +7,26 @@ directories below:
 val appDirs: AppDirs = AppDirsFactory.getInstance()
 val APP_NAME = "myApp"
 val APP_VERSION = "0.1.0"
-val APP_AUTHOR = "myName" // it does not have any effect in Unix
 
-val userDataDir: String = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val userDataDir: Path = appDirs.getUserDataDir(APP_NAME, APP_VERSION)
 // /home/<username>/.local/share/myApp/0.1.0
 
-val userConfigDir: String = appDirs.getUserConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val userConfigDir: Path = appDirs.getUserConfigDir(APP_NAME, APP_VERSION)
 // /home/<username>/.config/myApp/0.1.0
 
-val userCacheDir: String = appDirs.getUserCacheDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val userCacheDir: Path = appDirs.getUserCacheDir(APP_NAME, APP_VERSION)
 // /home/<username>/.cache/myApp/0.1.0
 
-val userLogDir: String = appDirs.getUserLogDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val userLogDir: Path = appDirs.getUserLogDir(APP_NAME, APP_VERSION)
 // /home/<username>/.cache/myApp/logs/0.1.0
 
-val siteLocalDataDir: String = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, APP_AUTHOR, local = true)
+val siteLocalDataDir: Path = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, local = true)
 // /usr/local/share/myApp/0.1.0
 
-val siteDataDir: String = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val siteDataDir: Path = appDirs.getSiteDataDir(APP_NAME, APP_VERSION)
 // /usr/share/myApp/0.1.0
 
-val siteConfigDir: String = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR, local = true)
+val siteConfigDir: Path = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION)
 // /etc/myApp/0.1.0
 ```
 
@@ -38,12 +37,9 @@ val siteConfigDir: String = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION, APP_
  > - `roaming` argument on `getUserDataDir` and `getUserConfigDir` has no
  >   effect in Unix system.
  > - `appAuthor` argument on every method has no effect in Unix system.
- > - Unix system uses forward slashes (/) as the directory separator.
- > - Whether you provide `local` to `getSiteConfigDir` method or not, the
- >   return value will be the same. It is kept like this to be similar to
- >   [harawata's appdirs](https://github.com/harawata/appdirs).
- > - Instead of harawata's appdirs, `getSiteConfigDir` points directly under
- >   `/etc` instead of `/etc/xdg`.
+ > - Unix system uses forward slashes (/) as the directory separator
+ > - Instead of [harawata's appdirs](https://github.com/harawata/appdirs),
+ >   `getSiteConfigDir` points directly under `/etc` instead of `/etc/xdg`.
 
 # What is meant by "Unix"?
 

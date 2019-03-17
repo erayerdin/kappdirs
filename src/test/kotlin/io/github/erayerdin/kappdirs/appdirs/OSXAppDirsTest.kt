@@ -1,8 +1,8 @@
 package io.github.erayerdin.kappdirs.appdirs
 
-import io.github.erayerdin.kappdirs.AppDirs
 import org.junit.*
 import org.junit.Assert.assertEquals
+import java.nio.file.Paths
 
 class OSXAppDirsTest {
     companion object {
@@ -31,7 +31,7 @@ class OSXAppDirsTest {
     @Test
     fun testUserDataDir() {
         assertEquals(
-            "/Users/bar/Library/Application Support/foo/0.1.0",
+            Paths.get("/Users/bar/Library/Application Support/foo/0.1.0"),
             appDirs.getUserDataDir(appName, appVersion, appAuthor)
         )
     }
@@ -44,7 +44,7 @@ class OSXAppDirsTest {
     @Test
     fun testUserCacheDir() {
         assertEquals(
-            "/Users/bar/Library/Caches/foo/0.1.0",
+            Paths.get("/Users/bar/Library/Caches/foo/0.1.0"),
             appDirs.getUserCacheDir(appName, appVersion, appAuthor)
         )
     }
@@ -52,7 +52,7 @@ class OSXAppDirsTest {
     @Test
     fun testUserLogDir() {
         assertEquals(
-            "/Users/bar/Library/Logs/foo/0.1.0",
+            Paths.get("/Users/bar/Library/Logs/foo/0.1.0"),
             appDirs.getUserLogDir(appName, appVersion, appAuthor)
         )
     }
@@ -60,7 +60,7 @@ class OSXAppDirsTest {
     @Test
     fun testSiteDataDir() {
         assertEquals(
-            "/Library/Application Support/foo/0.1.0",
+            Paths.get("/Library/Application Support/foo/0.1.0"),
             appDirs.getSiteDataDir(appName, appVersion, appAuthor)
         )
     }

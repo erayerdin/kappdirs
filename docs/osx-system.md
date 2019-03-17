@@ -7,24 +7,23 @@ below:
 val appDirs: AppDirs = AppDirsFactory.getInstance()
 val APP_NAME = "myApp"
 val APP_VERSION = "0.1.0"
-val APP_AUTHOR = "myName" // it does not have any effect in Mac OS X
 
-val userDataDir: String = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val userDataDir: Path = appDirs.getUserDataDir(APP_NAME, APP_VERSION)
 // /Users/<username>/Library/Application Support/myApp/0.1.0
 
-val userConfigDir: String = appDirs.getUserConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val userConfigDir: Path = appDirs.getUserConfigDir(APP_NAME, APP_VERSION)
 // /Users/<username>/Library/Application Support/myApp/0.1.0
 
-val userCacheDir: String = appDirs.getUserCacheDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val userCacheDir: Path = appDirs.getUserCacheDir(APP_NAME, APP_VERSION)
 // /Users/<username>/Library/Caches/myApp/0.1.0
 
-val userLogDir: String = appDirs.getUserLogDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val userLogDir: Path = appDirs.getUserLogDir(APP_NAME, APP_VERSION)
 // /Users/<username>/Library/Logs/myApp/0.1.0
 
-val siteDataDir: String = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val siteDataDir: Path = appDirs.getSiteDataDir(APP_NAME, APP_VERSION)
 // /Library/Application Support/myApp/0.1.0
 
-val siteConfigDir: String = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val siteConfigDir: Path = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION)
 // /Library/Application Support/myApp/0.1.0
 ```
 

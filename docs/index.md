@@ -20,10 +20,12 @@ You can grab an instance of `AppDirs` as below:
 
 ```kotlin
 val appDirs: AppDirs = AppDirsFactory.getInstance()
-val appData: String = appDirs.getUserDataDir("myApp", "0.1.0", "myName")
+val appData: Path = appDirs.getUserDataDir("myApp", "0.1.0", "myName")
 ```
 
-This will create an `AppDirs` object based on your operating system.
+`AppDirsFactory::getInstance` will create an `AppDirs` object based on your
+operating system and then you can use one of its methods to get `Path`
+instance.
 
 Currently, the operating systems below are supported:
 
