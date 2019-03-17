@@ -26,7 +26,7 @@ val siteLocalDataDir: Path = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, local
 val siteDataDir: Path = appDirs.getSiteDataDir(APP_NAME, APP_VERSION)
 // /usr/share/myApp/0.1.0
 
-val siteConfigDir: Path = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION, local = true)
+val siteConfigDir: Path = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION)
 // /etc/myApp/0.1.0
 ```
 
@@ -37,12 +37,9 @@ val siteConfigDir: Path = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION, local 
  > - `roaming` argument on `getUserDataDir` and `getUserConfigDir` has no
  >   effect in Unix system.
  > - `appAuthor` argument on every method has no effect in Unix system.
- > - Unix system uses forward slashes (/) as the directory separator.
- > - Whether you provide `local` to `getSiteConfigDir` method or not, the
- >   return value will be the same. It is kept like this to be similar to
- >   [harawata's appdirs](https://github.com/harawata/appdirs).
- > - Instead of harawata's appdirs, `getSiteConfigDir` points directly under
- >   `/etc` instead of `/etc/xdg`.
+ > - Unix system uses forward slashes (/) as the directory separator
+ > - Instead of [harawata's appdirs](https://github.com/harawata/appdirs),
+ >   `getSiteConfigDir` points directly under `/etc` instead of `/etc/xdg`.
 
 # What is meant by "Unix"?
 
