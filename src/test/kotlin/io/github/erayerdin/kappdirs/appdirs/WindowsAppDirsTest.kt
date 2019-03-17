@@ -47,15 +47,15 @@ class WindowsAppDirsTest {
     @Test
     fun testUserCacheDir() {
         val dir = appDirs.getUserCacheDir(appName, appVersion, appAuthor)
-        assertTrue(dir.startsWith("$systemDrive\\Users"))
-        assertTrue(dir.endsWith("\\AppData\\Local\\eray\\foo\\Cache\\0.1.0"))
+        assertTrue(dir.toString().startsWith("$systemDrive\\Users"))
+        assertTrue(dir.toString().endsWith("\\AppData\\Local\\eray\\foo\\Cache\\0.1.0"))
     }
 
     @Test
     fun testUserLogDir() {
         val dir = appDirs.getUserLogDir(appName, appVersion, appAuthor)
-        assertTrue(dir.startsWith("$systemDrive\\Users"))
-        assertTrue(dir.endsWith("\\AppData\\Local\\eray\\foo\\Logs\\0.1.0"))
+        assertTrue(dir.toString().startsWith("$systemDrive\\Users"))
+        assertTrue(dir.toString().endsWith("\\AppData\\Local\\eray\\foo\\Logs\\0.1.0"))
     }
 
     @Test
