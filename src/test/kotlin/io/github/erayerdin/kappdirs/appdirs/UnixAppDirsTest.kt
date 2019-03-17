@@ -1,10 +1,12 @@
 package io.github.erayerdin.kappdirs.appdirs
 
-import org.junit.*
 import org.junit.Assert.assertEquals
+import org.junit.Assume
+import org.junit.Before
+import org.junit.Test
 import java.nio.file.Paths
 
-internal val originalHome = System.getProperty("user.home")
+internal val home = System.getProperty("user.home")
 internal val osName = System.getProperty("os.name")?.toLowerCase()
 
 internal const val appName = "foo"
@@ -13,18 +15,6 @@ internal const val appVersion = "0.1.0"
 class UnixAppDirsTest {
     companion object {
         val appDirs: AppDirs = UnixAppDirs()
-
-        @JvmStatic
-        @BeforeClass
-        fun setUpClass() {
-            System.setProperty("user.home", "/home/bar")
-        }
-
-        @JvmStatic
-        @AfterClass
-        fun tearDownClass() {
-            System.setProperty("user.home", originalHome)
-        }
     }
 
     @Before
@@ -37,7 +27,7 @@ class UnixAppDirsTest {
     @Test
     fun testUserDataDir() {
         assertEquals(
-            Paths.get("/home/bar/.local/share/foo/0.1.0"),
+            Paths.get("$home/.local/share/foo/0.1.0"),
             appDirs.getUserDataDir(appName, appVersion, appAuthor)
         )
     }
@@ -45,7 +35,7 @@ class UnixAppDirsTest {
     @Test
     fun testUserConfigDir() {
         assertEquals(
-            Paths.get("/home/bar/.config/foo/0.1.0"),
+            Paths.get("$home/.config/foo/0.1.0"),
             appDirs.getUserConfigDir(appName, appVersion, appAuthor)
         )
     }
@@ -53,7 +43,7 @@ class UnixAppDirsTest {
     @Test
     fun testUserCacheDir() {
         assertEquals(
-            Paths.get("/home/bar/.cache/foo/0.1.0"),
+            Paths.get("$home/.cache/foo/0.1.0"),
             appDirs.getUserCacheDir(appName, appVersion, appAuthor)
         )
     }
@@ -61,7 +51,7 @@ class UnixAppDirsTest {
     @Test
     fun testUserLogDir() {
         assertEquals(
-            Paths.get("/home/bar/.cache/foo/logs/0.1.0"),
+            Paths.get("$home/.cache/foo/logs/0.1.0"),
             appDirs.getUserLogDir(appName, appVersion, appAuthor)
         )
     }
