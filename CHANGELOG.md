@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
  - Moved `AppDirs` interface from package root to `appdirs` package
+ - `appAuthor` argument on `AppDirs` methods is now `String?` instead of `String`
+ - Documentation related to changes
 
 ### Removed
  - `local` argument on `AppDirs::getSiteConfigDir`

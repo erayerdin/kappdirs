@@ -9,28 +9,28 @@ val APP_NAME = "myApp"
 val APP_VERSION = "0.1.0"
 val APP_AUTHOR = "myName" // or the organization name
 
-val userLocalDataDir: String = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val userLocalDataDir: Path = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
 // C:\Users\<username>\AppData\Local\myName\myApp\0.1.0
 
-val userRoamingDataDir: String = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR, roaming = true)
+val userRoamingDataDir: Path = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR, roaming = true)
 // C:\Users\<username>\AppData\Roaming\myName\myApp\0.1.0
 
-val userLocalConfigDir: String = appDirs.getUserConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val userLocalConfigDir: Path = appDirs.getUserConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR)
 // C:\Users\<username>\AppData\Local\myName\myApp\0.1.0
 
-val userRoamingConfigDir: String = appDirs.getUserConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR, roaming = true)
+val userRoamingConfigDir: Path = appDirs.getUserConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR, roaming = true)
 // C:\Users\<username>\AppData\Roaming\myName\myApp\0.1.0
 
-val userCacheDir: String = appDirs.getUserCacheDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val userCacheDir: Path = appDirs.getUserCacheDir(APP_NAME, APP_VERSION, APP_AUTHOR)
 // C:\Users\<username>\AppData\Local\myName\myApp\Cache\0.1.0
 
-val userLogDir: String = appDirs.getUserLogDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val userLogDir: Path = appDirs.getUserLogDir(APP_NAME, APP_VERSION, APP_AUTHOR)
 // C:\Users\<username>\AppData\Local\myName\myApp\Logs\0.1.0
 
-val siteDataDir: String = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val siteDataDir: Path = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
 // C:\ProgramData\myName\myApp\0.1.0
 
-val siteConfigDir: String = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val siteConfigDir: Path = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR)
 // C:\ProgramData\myName\myApp\0.1.0
 ```
 
@@ -54,6 +54,24 @@ val siteConfigDir: String = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION, APP_
  > - Windows is the only system that utilizes `appAuthor` on every method.
  > - Windows system is the only system that uses backward slashes (\\) as
  >   the directory separator.
+ 
+## Note on `appAuthor`
+
+Windows is the only system that uses `appAuthor` argument. That's why, in all
+`AppDirs` instance methods' signatures, it is marked as `String?` and defaults
+to `null`.
+
+Since it is `null` by default, you do not have to pass `appAuthor`. In this
+case, `appAuthor` will not be rendered to `Path` instance. See the examples
+below and compare them:
+
+```kotlin
+val userLocalDataDirWithAppAuthor: Path = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+// C:\Users\<username>\AppData\Local\myName\myApp\0.1.0
+
+val userLocalDataDirWithAppAuthor: Path = appDirs.getUserDataDir(APP_NAME, APP_VERSION)
+// C:\Users\<username>\AppData\Local\myApp\0.1.0
+```
 
 # What is Roaming?
 
