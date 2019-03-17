@@ -42,7 +42,7 @@ internal class UnixAppDirs: AppDirs {
         return Paths.get("/", directories.joinToString(SEPARATOR))
     }
 
-    override fun getSiteConfigDir(appName: String, appVersion: String, appAuthor: String, local: Boolean): Path {
+    override fun getSiteConfigDir(appName: String, appVersion: String, appAuthor: String): Path {
         return Paths.get("/", arrayOf("etc", appName, appVersion).joinToString(SEPARATOR))
     }
 }

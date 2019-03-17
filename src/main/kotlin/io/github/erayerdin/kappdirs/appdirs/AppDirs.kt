@@ -62,8 +62,7 @@ interface AppDirs {
      * @param appVersion The version of the application.
      * @param appAuthor The author of the application. You can also use your organization's name.
      * It does not have any effect on Mac OS X, any Unix-based systems or any Linux distributions.
-     * @param local This does not have any effect on this method.
      * @return A directory containing system-wide configuration files of the application.
      */
-    fun getSiteConfigDir(appName: String, appVersion: String, appAuthor: String, local: Boolean = false): Path
+    fun getSiteConfigDir(appName: String, appVersion: String, appAuthor: String): Path
 }

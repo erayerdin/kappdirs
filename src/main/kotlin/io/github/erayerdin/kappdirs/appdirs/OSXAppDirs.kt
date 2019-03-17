@@ -36,7 +36,7 @@ internal class OSXAppDirs: AppDirs {
         )
     }
 
-    override fun getSiteConfigDir(appName: String, appVersion: String, appAuthor: String, local: Boolean): Path {
-        return getSiteDataDir(appName, appVersion, appAuthor, local)
+    override fun getSiteConfigDir(appName: String, appVersion: String, appAuthor: String): Path {
+        return getSiteDataDir(appName, appVersion, appAuthor)
     }
 }
