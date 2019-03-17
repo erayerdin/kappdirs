@@ -2,6 +2,7 @@ package io.github.erayerdin.kappdirs.appdirs
 
 import org.junit.*
 import org.junit.Assert.assertEquals
+import java.nio.file.Paths
 
 internal val originalHome = System.getProperty("user.home")
 internal val osName = System.getProperty("os.name")?.toLowerCase()
@@ -37,7 +38,7 @@ class UnixAppDirsTest {
     @Test
     fun testUserDataDir() {
         assertEquals(
-            "/home/bar/.local/share/foo/0.1.0",
+            Paths.get("/home/bar/.local/share/foo/0.1.0"),
             appDirs.getUserDataDir(appName, appVersion, appAuthor)
         )
     }
@@ -45,7 +46,7 @@ class UnixAppDirsTest {
     @Test
     fun testUserConfigDir() {
         assertEquals(
-            "/home/bar/.config/foo/0.1.0",
+            Paths.get("/home/bar/.config/foo/0.1.0"),
             appDirs.getUserConfigDir(appName, appVersion, appAuthor)
         )
     }
@@ -53,7 +54,7 @@ class UnixAppDirsTest {
     @Test
     fun testUserCacheDir() {
         assertEquals(
-            "/home/bar/.cache/foo/0.1.0",
+            Paths.get("/home/bar/.cache/foo/0.1.0"),
             appDirs.getUserCacheDir(appName, appVersion, appAuthor)
         )
     }
@@ -61,7 +62,7 @@ class UnixAppDirsTest {
     @Test
     fun testUserLogDir() {
         assertEquals(
-            "/home/bar/.cache/foo/logs/0.1.0",
+            Paths.get("/home/bar/.cache/foo/logs/0.1.0"),
             appDirs.getUserLogDir(appName, appVersion, appAuthor)
         )
     }
@@ -69,7 +70,7 @@ class UnixAppDirsTest {
     @Test
     fun testLocalSiteDataDir() {
         assertEquals(
-            "/usr/local/share/foo/0.1.0",
+            Paths.get("/usr/local/share/foo/0.1.0"),
             appDirs.getSiteDataDir(appName, appVersion, appAuthor, true)
         )
     }
@@ -77,7 +78,7 @@ class UnixAppDirsTest {
     @Test
     fun testSiteDataDir() {
         assertEquals(
-            "/usr/share/foo/0.1.0",
+            Paths.get("/usr/share/foo/0.1.0"),
             appDirs.getSiteDataDir(appName, appVersion, appAuthor)
         )
     }
@@ -85,7 +86,7 @@ class UnixAppDirsTest {
     @Test
     fun testSiteConfigDir() {
         assertEquals(
-            "/etc/foo/0.1.0",
+            Paths.get("/etc/foo/0.1.0"),
             appDirs.getSiteConfigDir(appName, appVersion, appAuthor)
         )
     }
