@@ -9,4 +9,4 @@ nav:
   - Windows System: windows-system.md
   - Mac OS X System: osx-system.md
   - Unix System: unix-system.md
-  - Recipes: recipes.md
+  - DSL API: dsl-api.md
