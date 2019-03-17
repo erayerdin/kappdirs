@@ -1,16 +1,18 @@
 package io.github.erayerdin.kappdirs
 
 import io.github.erayerdin.kappdirs.appdirs.AppDirs
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
+import java.nio.file.Path
+import java.nio.file.Paths
 
 object ImplAppDirs: AppDirs {
-    override fun getUserDataDir(appName: String, appVersion: String, appAuthor: String, roaming: Boolean): String = "a"
-    override fun getUserConfigDir(appName: String, appVersion: String, appAuthor: String, roaming: Boolean): String = "b"
-    override fun getUserCacheDir(appName: String, appVersion: String, appAuthor: String): String = "c"
-    override fun getUserLogDir(appName: String, appVersion: String, appAuthor: String): String = "d"
-    override fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String, local: Boolean): String = "e"
-    override fun getSiteConfigDir(appName: String, appVersion: String, appAuthor: String, local: Boolean): String = "f"
+    override fun getUserDataDir(appName: String, appVersion: String, appAuthor: String, roaming: Boolean): Path = Paths.get("/a")
+    override fun getUserConfigDir(appName: String, appVersion: String, appAuthor: String, roaming: Boolean): Path = Paths.get("/b")
+    override fun getUserCacheDir(appName: String, appVersion: String, appAuthor: String): Path = Paths.get("/c")
+    override fun getUserLogDir(appName: String, appVersion: String, appAuthor: String): Path = Paths.get("/d")
+    override fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String, local: Boolean): Path = Paths.get("/e")
+    override fun getSiteConfigDir(appName: String, appVersion: String, appAuthor: String, local: Boolean): Path = Paths.get("/f")
 
 }
 
