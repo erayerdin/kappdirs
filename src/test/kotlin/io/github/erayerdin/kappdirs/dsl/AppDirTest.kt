@@ -27,7 +27,7 @@ class AppDirTest {
 //        @JvmStatic
 //        @AfterClass
 //        fun tearDownClass() {
-//            System.setProperty("user.home", originalHome)
+//            System.setProperty("user.home", home)
 //        }
     }
 
