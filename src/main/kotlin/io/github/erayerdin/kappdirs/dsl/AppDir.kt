@@ -13,11 +13,20 @@ data class AppDir(
 ) {
     private val appDirs: AppDirs = AppDirsFactory.getInstance()
 
-    fun userData(vararg path: String, roaming: Boolean = false, method: (dir: File, file: File) -> Unit) {
-        val realPath = appDirs.getUserDataDir(appName, appVersion, appAuthor, roaming).resolve(path)
+    private fun invokeLambda(realPath: Path, method: (dir: File, file: File) -> Unit) {
         val file = realPath.toFile()
         val dir = File(file, "..")
         method(dir, file)
+    }
+
+    fun userData(vararg path: String, roaming: Boolean = false, method: (dir: File, file: File) -> Unit) {
+        val realPath = appDirs.getUserDataDir(appName, appVersion, appAuthor, roaming).resolve(path)
+        invokeLambda(realPath, method)
+    }
+
+    fun userConfig(vararg path: String, roaming: Boolean = false, method: (dir: File, file: File) -> Unit) {
+        val realPath = appDirs.getUserConfigDir(appName, appVersion, appAuthor, roaming).resolve(path)
+        invokeLambda(realPath, method)
     }
 
     operator fun invoke(method: AppDir.() -> Unit) {
