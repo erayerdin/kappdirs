@@ -86,4 +86,15 @@ class AppDirTest {
             }
         }
     }
+
+    @Test
+    fun testUserLog() {
+        appDir {
+            userLog("bar", "baz.txt") { dir, file ->
+                assertReadWriteOperations(dir, file)
+            }
+        }
+    }
+
+    // todo 1 - find a way to test system level dirs
 }

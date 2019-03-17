@@ -34,6 +34,11 @@ data class AppDir(
         invokeLambda(realPath, method)
     }
 
+    fun userLog(vararg path: String, method: (dir: File, file: File) -> Unit) {
+        val realPath = appDirs.getUserLogDir(appName, appVersion, appAuthor).resolve(path)
+        invokeLambda(realPath, method)
+    }
+
     operator fun invoke(method: AppDir.() -> Unit) {
         method(this)
     }
