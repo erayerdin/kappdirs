@@ -5,7 +5,7 @@
 
     <groupId>io.github.erayerdin</groupId>
     <artifactId>kappdirs</artifactId>
-    <version>0.1.5-prealpha</version>
+    <version>0.1.5-alpha</version>
     <packaging>jar</packaging>
 
     <name>kappdirs</name>
