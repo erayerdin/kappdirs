@@ -1,24 +1,14 @@
 package io.github.erayerdin.kappdirs.appdirs
 
-import org.junit.*
 import org.junit.Assert.assertEquals
+import org.junit.Assume
+import org.junit.Before
+import org.junit.Test
 import java.nio.file.Paths
 
 class OSXAppDirsTest {
     companion object {
         val appDirs: AppDirs = OSXAppDirs()
-
-        @JvmStatic
-        @BeforeClass
-        fun setUpClass() {
-            System.setProperty("user.home", "/Users/bar")
-        }
-
-        @JvmStatic
-        @AfterClass
-        fun tearDownClass() {
-            System.setProperty("user.home", originalHome)
-        }
     }
 
     @Before
@@ -31,7 +21,7 @@ class OSXAppDirsTest {
     @Test
     fun testUserDataDir() {
         assertEquals(
-            Paths.get("/Users/bar/Library/Application Support/foo/0.1.0"),
+            Paths.get("$home/Library/Application Support/foo/0.1.0"),
             appDirs.getUserDataDir(appName, appVersion, appAuthor)
         )
     }
@@ -44,7 +34,7 @@ class OSXAppDirsTest {
     @Test
     fun testUserCacheDir() {
         assertEquals(
-            Paths.get("/Users/bar/Library/Caches/foo/0.1.0"),
+            Paths.get("$home/Library/Caches/foo/0.1.0"),
             appDirs.getUserCacheDir(appName, appVersion, appAuthor)
         )
     }
@@ -52,7 +42,7 @@ class OSXAppDirsTest {
     @Test
     fun testUserLogDir() {
         assertEquals(
-            Paths.get("/Users/bar/Library/Logs/foo/0.1.0"),
+            Paths.get("$home/Library/Logs/foo/0.1.0"),
             appDirs.getUserLogDir(appName, appVersion, appAuthor)
         )
     }
