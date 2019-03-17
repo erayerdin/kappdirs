@@ -61,7 +61,7 @@ class WindowsAppDirsTest {
     @Test
     fun testSiteDataDir() {
         val dir = appDirs.getSiteDataDir(appName, appVersion, appAuthor)
-        assertEquals("$systemDrive\\ProgramData\\eray\\foo\\0.1.0", dir)
+        assertEquals("$systemDrive\\ProgramData\\eray\\foo\\0.1.0", dir.toString())
     }
 
     @Test
