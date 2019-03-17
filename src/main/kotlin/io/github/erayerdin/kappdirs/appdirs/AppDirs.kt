@@ -1,4 +1,6 @@
-package io.github.erayerdin.kappdirs
+package io.github.erayerdin.kappdirs.appdirs
+
+import java.nio.file.Path
 
 /**
  * An interface for implementing application directories.
@@ -13,7 +15,7 @@ interface AppDirs {
      * For more information, see [here](https://kappdirs.readthedocs.io/en/latest/windows-system/#what-is-roaming).
      * @return A directory containing data related to a specific user.
      */
-    fun getUserDataDir(appName: String, appVersion: String, appAuthor: String, roaming: Boolean = false): String
+    fun getUserDataDir(appName: String, appVersion: String, appAuthor: String, roaming: Boolean = false): Path
 
     /**
      * @param appName The name of the application.
@@ -24,7 +26,7 @@ interface AppDirs {
      * For more information, see [here](https://kappdirs.readthedocs.io/en/latest/windows-system/#what-is-roaming).
      * @return A directory containing configuration data of the application related to a specific user.
      */
-    fun getUserConfigDir(appName: String, appVersion: String, appAuthor: String, roaming: Boolean = false): String
+    fun getUserConfigDir(appName: String, appVersion: String, appAuthor: String, roaming: Boolean = false): Path
 
     /**
      * @param appName The name of the application.
@@ -33,7 +35,7 @@ interface AppDirs {
      * It does not have any effect on Mac OS X, any Unix-based systems or any Linux distributions.
      * @return A directory containing cache data of the application. It is a user-based directory.
      */
-    fun getUserCacheDir(appName: String, appVersion: String, appAuthor: String): String
+    fun getUserCacheDir(appName: String, appVersion: String, appAuthor: String): Path
 
     /**
      * @param appName The name of the application.
@@ -42,7 +44,7 @@ interface AppDirs {
      * It does not have any effect on Mac OS X, any Unix-based systems or any Linux distributions.
      * @return A directory containing log files of the application. It is a user-based directory.
      */
-    fun getUserLogDir(appName: String, appVersion: String, appAuthor: String): String
+    fun getUserLogDir(appName: String, appVersion: String, appAuthor: String): Path
 
     /**
      * @param appName The name of the application.
@@ -53,7 +55,7 @@ interface AppDirs {
      * Linux distributions.
      * @return A directory containing system-wide data of the application.
      */
-    fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String, local: Boolean = false): String
+    fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String, local: Boolean = false): Path
 
     /**
      * @param appName The name of the application.
@@ -63,5 +65,5 @@ interface AppDirs {
      * @param local This does not have any effect on this method.
      * @return A directory containing system-wide configuration files of the application.
      */
-    fun getSiteConfigDir(appName: String, appVersion: String, appAuthor: String, local: Boolean = false): String
+    fun getSiteConfigDir(appName: String, appVersion: String, appAuthor: String, local: Boolean = false): Path
 }

@@ -1,6 +1,5 @@
 package io.github.erayerdin.kappdirs.appdirs
 
-import io.github.erayerdin.kappdirs.AppDirs
 import java.nio.file.Paths
 
 internal class UnixAppDirs: AppDirs {

@@ -1,5 +1,6 @@
 package io.github.erayerdin.kappdirs
 
+import io.github.erayerdin.kappdirs.appdirs.AppDirs
 import org.junit.Test
 import kotlin.test.assertSame
 

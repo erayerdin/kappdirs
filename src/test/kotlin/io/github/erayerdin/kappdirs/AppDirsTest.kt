@@ -1,5 +1,6 @@
 package io.github.erayerdin.kappdirs
 
+import io.github.erayerdin.kappdirs.appdirs.AppDirs
 import org.junit.Assert.*
 import org.junit.Test
 

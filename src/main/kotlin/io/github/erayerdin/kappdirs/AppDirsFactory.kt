@@ -1,5 +1,6 @@
 package io.github.erayerdin.kappdirs
 
+import io.github.erayerdin.kappdirs.appdirs.AppDirs
 import io.github.erayerdin.kappdirs.appdirs.OSXAppDirs
 import io.github.erayerdin.kappdirs.appdirs.UnixAppDirs
 import io.github.erayerdin.kappdirs.appdirs.WindowsAppDirs
