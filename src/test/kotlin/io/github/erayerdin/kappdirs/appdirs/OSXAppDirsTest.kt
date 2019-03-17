@@ -9,18 +9,6 @@ import java.nio.file.Paths
 class OSXAppDirsTest {
     companion object {
         val appDirs: AppDirs = OSXAppDirs()
-
-//        @JvmStatic
-//        @BeforeClass
-//        fun setUpClass() {
-//            System.setProperty("user.home", "$home")
-//        }
-//
-//        @JvmStatic
-//        @AfterClass
-//        fun tearDownClass() {
-//            System.setProperty("user.home", home)
-//        }
     }
 
     @Before

@@ -15,18 +15,6 @@ internal const val appVersion = "0.1.0"
 class UnixAppDirsTest {
     companion object {
         val appDirs: AppDirs = UnixAppDirs()
-
-//        @JvmStatic
-//        @BeforeClass
-//        fun setUpClass() {
-//            System.setProperty("user.home", "$home")
-//        }
-//
-//        @JvmStatic
-//        @AfterClass
-//        fun tearDownClass() {
-//            System.setProperty("user.home", home)
-//        }
     }
 
     @Before

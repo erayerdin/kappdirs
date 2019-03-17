@@ -10,25 +10,6 @@ import java.io.File
 class AppDirTest {
     companion object {
         private val appDir = AppDir("foo", "0.1.0", "eray")
-
-//        @JvmStatic
-//        @BeforeClass
-//        fun setUpClass() {
-//
-//
-//            when {
-//                osName!!.startsWith("mac") -> System.setProperty("user.home", "/Users/bar")
-//                osName.startsWith("windows") -> {}
-//                else -> System.setProperty("user.home", "/home/bar")
-//            }
-//            System.setProperty("user.home", "/home/bar")
-//        }
-//
-//        @JvmStatic
-//        @AfterClass
-//        fun tearDownClass() {
-//            System.setProperty("user.home", home)
-//        }
     }
 
     @Test
@@ -70,6 +51,28 @@ class AppDirTest {
 
         appDir {
             userData("bar", "baz.txt", roaming = true) { dir, file ->
+                assertReadWriteOperations(dir, file)
+            }
+        }
+    }
+
+    @Test
+    fun testUserConfig() {
+        appDir {
+            userConfig("bar", "baz.txt") { dir, file ->
+                assertReadWriteOperations(dir, file)
+            }
+        }
+    }
+
+    @Test
+    fun testUserConfigWithRoaming() {
+        if (osName != null) {
+            assumeTrue(osName.startsWith("windows"))
+        }
+
+        appDir {
+            userConfig("bar", "baz.txt", roaming = true) { dir, file ->
                 assertReadWriteOperations(dir, file)
             }
         }
