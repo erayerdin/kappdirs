@@ -4,35 +4,35 @@ import java.nio.file.Path
 import java.nio.file.Paths
 
 internal class UnixAppDirs: AppDirs {
-    override fun getUserDataDir(appName: String, appVersion: String, appAuthor: String, roaming: Boolean): Path {
+    override fun getUserDataDir(appName: String, appVersion: String, appAuthor: String?, roaming: Boolean): Path {
         return Paths.get(
             HOME_DIR,
             arrayOf(".local", "share", appName, appVersion).joinToString(SEPARATOR)
         )
     }
 
-    override fun getUserConfigDir(appName: String, appVersion: String, appAuthor: String, roaming: Boolean): Path {
+    override fun getUserConfigDir(appName: String, appVersion: String, appAuthor: String?, roaming: Boolean): Path {
         return Paths.get(
             HOME_DIR,
             arrayOf(".config", appName, appVersion).joinToString(SEPARATOR)
         )
     }
 
-    override fun getUserCacheDir(appName: String, appVersion: String, appAuthor: String): Path {
+    override fun getUserCacheDir(appName: String, appVersion: String, appAuthor: String?): Path {
         return Paths.get(
             HOME_DIR,
             arrayOf(".cache", appName, appVersion).joinToString(SEPARATOR)
         )
     }
 
-    override fun getUserLogDir(appName: String, appVersion: String, appAuthor: String): Path {
+    override fun getUserLogDir(appName: String, appVersion: String, appAuthor: String?): Path {
         return Paths.get(
             HOME_DIR,
             arrayOf(".cache", appName, "logs", appVersion).joinToString(SEPARATOR)
         )
     }
 
-    override fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String, local: Boolean): Path {
+    override fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String?, local: Boolean): Path {
         val directories: Array<String> = if (local) {
             arrayOf("usr", "local", "share", appName, appVersion)
         } else {
@@ -42,7 +42,7 @@ internal class UnixAppDirs: AppDirs {
         return Paths.get("/", directories.joinToString(SEPARATOR))
     }
 
-    override fun getSiteConfigDir(appName: String, appVersion: String, appAuthor: String): Path {
+    override fun getSiteConfigDir(appName: String, appVersion: String, appAuthor: String?): Path {
         return Paths.get("/", arrayOf("etc", appName, appVersion).joinToString(SEPARATOR))
     }
 }

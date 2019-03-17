@@ -7,7 +7,6 @@ import java.nio.file.Paths
 internal val originalHome = System.getProperty("user.home")
 internal val osName = System.getProperty("os.name")?.toLowerCase()
 
-internal const val appAuthor = "eray"
 internal const val appName = "foo"
 internal const val appVersion = "0.1.0"
 

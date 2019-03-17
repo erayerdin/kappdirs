@@ -7,12 +7,12 @@ import java.nio.file.Path
 import java.nio.file.Paths
 
 object ImplAppDirs: AppDirs {
-    override fun getUserDataDir(appName: String, appVersion: String, appAuthor: String, roaming: Boolean): Path = Paths.get("/a")
-    override fun getUserConfigDir(appName: String, appVersion: String, appAuthor: String, roaming: Boolean): Path = Paths.get("/b")
-    override fun getUserCacheDir(appName: String, appVersion: String, appAuthor: String): Path = Paths.get("/c")
-    override fun getUserLogDir(appName: String, appVersion: String, appAuthor: String): Path = Paths.get("/d")
-    override fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String, local: Boolean): Path = Paths.get("/e")
-    override fun getSiteConfigDir(appName: String, appVersion: String, appAuthor: String, local: Boolean): Path = Paths.get("/f")
+    override fun getUserDataDir(appName: String, appVersion: String, appAuthor: String?, roaming: Boolean): Path = Paths.get("/a")
+    override fun getUserConfigDir(appName: String, appVersion: String, appAuthor: String?, roaming: Boolean): Path = Paths.get("/b")
+    override fun getUserCacheDir(appName: String, appVersion: String, appAuthor: String?): Path = Paths.get("/c")
+    override fun getUserLogDir(appName: String, appVersion: String, appAuthor: String?): Path = Paths.get("/d")
+    override fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String?, local: Boolean): Path = Paths.get("/e")
+    override fun getSiteConfigDir(appName: String, appVersion: String, appAuthor: String?): Path = Paths.get("/f")
 
 }
 
