@@ -39,6 +39,16 @@ data class AppDir(
         invokeLambda(realPath, method)
     }
 
+    fun siteData(vararg path: String, local: Boolean = false, method: (dir: File, file: File) -> Unit) {
+        val realPath = appDirs.getSiteDataDir(appName, appVersion, appAuthor, local).resolve(path)
+        invokeLambda(realPath, method)
+    }
+
+    fun siteConfig(vararg path: String, method: (dir: File, file: File) -> Unit) {
+        val realPath = appDirs.getSiteConfigDir(appName, appVersion, appAuthor).resolve(path)
+        invokeLambda(realPath, method)
+    }
+
     operator fun invoke(method: AppDir.() -> Unit) {
         method(this)
     }

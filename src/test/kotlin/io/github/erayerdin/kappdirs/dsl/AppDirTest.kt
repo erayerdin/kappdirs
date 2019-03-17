@@ -97,4 +97,5 @@ class AppDirTest {
     }
 
     // todo 1 - find a way to test system level dirs
+    // it is especially problematic on unix type systems
 }
