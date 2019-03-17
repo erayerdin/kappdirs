@@ -10,6 +10,6 @@ enum class Flag {
     ROAMING, LOCAL
 }
 
-fun app(app: App, flags: Set<Flag>, method: (app: App, flags: Set<Flag>) -> Unit) {
-    method(app, flags)
+fun app(app: App, method: (App) -> Unit) {
+    method(app)
 }
