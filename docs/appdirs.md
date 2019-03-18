@@ -1,21 +1,63 @@
-# `AppDirs` Instance Methods
+# AppDirs Instance
 
-Every `AppDirs` instance contains the methods below:
+To get an `AppDirs` instance, you need to get it from
+`AppDirsFactory::getInstance`. See example below:
 
- - `getUserDataDir`
- - `getUserConfigDir`
- - `getUserCacheDir`
- - `getUserLogDir`
- - `getSiteDataDir`
- - `getSiteConfigDir`
+```kotlin
+val appDirs: AppDirs = AppDirsFactory.getInstance()
+```
 
-Each method's signature contains the arguments below:
+!!! note
+    Since it is assumed that the operating system cannot be changed during
+    the runtime, `AppDirsFactory::getInstance` will lazily instantiate an
+    `AppDirs` instance, which means the second time you call it, you will
+    get the reference to the same object.
 
-| Name | Type | Default |
-|------|------|---------|
-| appName | String | - |
-| appVersion | String | - |
-| appAuthor | String? | null |
+## Methods
+
+Every `AppDirs` instance contains the methods and their signatures below:
+ 
+```kotlin
+getUserDataDir(
+    appName: String,
+    appVersion: String,
+    appAuthor: String? = null,
+    roaming: Boolean = false
+): Path
+getUserConfigDir(
+    appName: String,
+    appVersion: String,
+    appAuthor: String? = null,
+    roaming: Boolean = false
+): Path
+getUserCacheDir(
+    appName: String,
+    appVersion: String,
+    appAuthor: String? = null
+): Path
+getUserLogDir(
+    appName: String,
+    appVersion: String,
+    appAuthor: String? = null
+): Path
+getUserDownloadsDir(): Path
+getUserDesktopDir(): Path
+getUserDocumentsDir(): Path
+getUserMusicDir(): Path
+getUserPicturesDir(): Path
+getUserVideosDir(): Path
+getSiteDataDir(
+    appName: String, 
+    appVersion: String, 
+    appAuthor: String? = null, 
+    local: Boolean = false
+): Path
+getSiteConfigDir(
+    appName: String, 
+    appVersion: String, 
+    appAuthor: String? = null
+): Path
+```
 
 As an example:
 
@@ -29,42 +71,45 @@ val userDataDir: Path = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR
 val userConfigDir: Path = appDirs.getUserConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR)
 val userCacheDir: Path = appDirs.getUserCacheDir(APP_NAME, APP_VERSION, APP_AUTHOR)
 val userLogDir: Path = appDirs.getUserLogDir(APP_NAME, APP_VERSION, APP_AUTHOR)
+val userDownloadsDir: Path = appDirs.getUserDownloadsDir()
+val userDesktopDir: Path = appDirs.getUserDesktopDir()
+val userDocumentsDir: Path = appDirs.getUserDocumentsDir()
+val userMusicDir: Path = appDirs.getUserMusicDir()
+val userPicturesDir: Path = appDirs.getUserPicturesDir()
+val userVideosDir: Path = appDirs.getUserVideosDir()
 val siteDataDir: Path = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
 val siteConfigDir: Path = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR)
 ```
 
-Apart from the arguments above, `getUserDataDir` and `getUserConfigDir` methods
-(first two above) have one extra argument called `roaming`, which is `false` by
-default. As an example:
+`getUserDataDir` and `getUserConfigDir` methods (first two above) have one
+extra argument called `roaming`, which is `false` by default. As an example:
 
 ```kotlin
 // roaming examples
-val userDataDir: Path = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR, true)
-val userConfigDir: Path = appDirs.getUserConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR, true)
+val userDataDir: Path = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR, roaming = true)
+val userConfigDir: Path = appDirs.getUserConfigDir(APP_NAME, APP_VERSION, APP_AUTHOR, roaming = true)
 ```
 
- > <h4>Note</h4>
- >
- > Practically, `roaming` argument only has effect on Windows machines.
- > To get more information about `roaming`, check out [this part](windows-system.md#what-is-roaming)
- > of Windows section of the documentation.
+!!! note
+    Practically, `roaming` argument only has effect on Windows machines.
+    To get more information about `roaming`, check out [this part](windows-system.md#what-is-roaming)
+    of Windows section of the documentation.
 
 Also, `getSiteDataDir` method has one extra argument called `local`, which
 is`false` by default. As an example:
 
 ```kotlin
 // local example
-val siteDataDir: Path = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, APP_AUTHOR, true)
+val siteDataDir: Path = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, APP_AUTHOR, local = true)
 ```
 
- > <h4>Note</h4>
- >
- > Practically, `local` argument only has effect on [XDG-compliant](http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html)
- > Unix based or inspired machines (including XDG-compliant Linux).
- > To get more information about `local`, see [Unix section](unix-system.md)
- > of the documentation.
+!!! note
+    Practically, `local` argument only has effect on [XDG-compliant](http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html)
+    Unix based or inspired systems (including XDG-compliant Linux). To get
+    more information about `local`, see [Unix section](unix-system.md) of
+    the documentation.
 
-# The Purpose of Directories
+## The Purpose of Directories
 
 The application directories have different purposes. How they work also
 differs on the operating system your application runs. You can see how they
@@ -74,7 +119,7 @@ keep in mind that these methods are based on a convention, which means you
 can break the conventions any time you want, but it is just easier to keep
 it alive.
 
-<h2>User <em>versus</em> Site Methods</h2>
+### User <em>versus</em> Site Methods
 
 The user application directory methods in `kappdirs` are as below:
 
@@ -82,6 +127,12 @@ The user application directory methods in `kappdirs` are as below:
  - `getUserConfigDir`
  - `getUserCacheDir`
  - `getUserLogDir`
+ - `getUserDownloadsDir`
+ - `getUserDesktopDir`
+ - `getUserDocumentsDir`
+ - `getUserMusicDir`
+ - `getUserPicturesDir`
+ - `getUserVideosDir`
 
 The site application directory methods, on the other hand, are as below:
 
@@ -96,11 +147,11 @@ for your application. You usually need to store data based on a particular
 user in these directories.
 
 On the other hand, site-based methods point at system-wide directories.
-Your user might or might not have specific accesses to these directories.
+Your user might or might not have specific permissions to these directories.
 You usually need to store system-wide data in these directories which will
 naturally effect the other users in the same machine.
 
-<h2>Data <em>versus</em> Config Methods</h2>
+### Data <em>versus</em> Config Methods
 
 The data application directory methods in `kappdirs` are as below:
 
@@ -122,16 +173,15 @@ stored while `getUserConfigDir` method points to the directory how the user
 wants the game to behave, like the resolution for the game or user-specific
 control-schemes.
 
- > <h4>Note</h4>
- >
- > Also, in this example, you do not need `getSiteDataDir` or
- > `getSiteConfigDir` method. You usually do not need to use these methods,
- > especially in *writing* operations. It is a good practice to write into
- > these directories on *installation* process of your application and with
- > *proper permissions* and then, you do *reading* operations from these
- > directories.
+!!! note
+    Also, in this example, you do not need `getSiteDataDir` or
+    `getSiteConfigDir` method. You usually do not need to use these methods,
+    especially in *writing* operations. It is a good practice to write into
+    system-wide (site) directories on *installation* process of your
+    application and with *proper permissions* and then, you do *reading*
+    operations from these directories.
 
-<h2>Cache Method</h2>
+### Cache Method
 
 Cache directory can be acquired via `getUserCacheDir` method. It is used to
 store the files that is acquired after a heavy operation.
@@ -144,16 +194,17 @@ can save these assets into cache directory and read them on.
 
 Another example is where you need to generate an image programmatically.
 Imagine a scenario where you detect the face and properly crop for a
-profile picture. Instead of doing it again and again and wasting CPU
+profile picture. Instead of doing it again and again and wasting CPU/GPU
 resources, you can save the image to the cache directory and use it in the
 next run.
 
 Cache directory is only a user directory because users create caches and
-you cannot always rely on caches. For example, if the cached resource that
-your program is looking for is not in its place, you will likely need to
-*redownload* or *regenerate* and, in the end, *recache* your resource.
+you cannot always rely on caches (meaning that they are not intended to be
+persistent data). For example, if the cached resource that your program is
+looking for is not in its place, you will likely need to *redownload* or
+*regenerate* and, in the end, *recache* your resource.
 
-<h2>Log Method</h2>
+### Log Method
 
 Log directory can be acquired via `getUserLogDir` method. It is used to
 dump the logs that your application generates.
@@ -165,3 +216,30 @@ the issue.
 Log directory is only a user directory. Keep in mind that you might need to
 clear the older logs from time to time in order not to bloat the drive of
 the machine that your application runs on.
+
+### Extra User Application Directories
+
+Extra user application directories are new user-based directories that you
+can use. These methods are as below:
+
+ - `getUserDownloadsDir`
+ - `getUserDesktopDir`
+ - `getUserDocumentsDir`
+ - `getUserMusicDir`
+ - `getUserPicturesDir`
+ - `getUserVideosDir`
+ 
+The common point that these methods share is that they require zero
+argument, which means you can use one of them as below:
+
+```kotlin
+val downloadsDir: Path = appDirs.getUserDownloadsDir()
+```
+
+That is intended because there is no convention about how to use or utilize
+these directories, so if you want to use your application name as a child,
+you should do it manually as below:
+
+```kotlin
+val appDownloadDir: Path = Paths.get(downloadsDir, "myApp")
+```

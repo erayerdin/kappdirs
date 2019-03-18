@@ -1,4 +1,6 @@
-# AppDirs Instance Methods
+# Unix System
+
+## AppDirs Instance Methods
 
 In a Unix based or inspired machine, following `AppDirs` methods point at the
 directories below:
@@ -20,6 +22,24 @@ val userCacheDir: Path = appDirs.getUserCacheDir(APP_NAME, APP_VERSION)
 val userLogDir: Path = appDirs.getUserLogDir(APP_NAME, APP_VERSION)
 // /home/<username>/.cache/myApp/logs/0.1.0
 
+val userDownloadsDir: Path = appDirs.getUserDownloadsDir()
+// /home/<username>/Downloads
+
+val userDesktopDir: Path = appDirs.getUserDesktopDir()
+// /home/<username>/Desktop
+
+val userDocumentsDir: Path = appDirs.getUserDocumentsDir()
+// /home/<username>/Documents
+
+val userMusicDir: Path = appDirs.getUserMusicDir()
+// /home/<username>/Music
+
+val userPicturesDir: Path = appDirs.getUserPicturesDir()
+// /home/<username>/Pictures
+
+val userVideosDir: Path = appDirs.getUserVideosDir()
+// /home/<username>/Videos
+
 val siteLocalDataDir: Path = appDirs.getSiteDataDir(APP_NAME, APP_VERSION, local = true)
 // /usr/local/share/myApp/0.1.0
 
@@ -30,18 +50,18 @@ val siteConfigDir: Path = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION)
 // /etc/myApp/0.1.0
 ```
 
- > <h4>Notes</h4>
- >
- > - Unix is the only system that utilizes `local` argument on
- >   `getSiteDataDir` and `getSiteConfigDir` methods.
- > - `roaming` argument on `getUserDataDir` and `getUserConfigDir` has no
- >   effect in Unix system.
- > - `appAuthor` argument on every method has no effect in Unix system.
- > - Unix system uses forward slashes (/) as the directory separator
- > - Instead of [harawata's appdirs](https://github.com/harawata/appdirs),
- >   `getSiteConfigDir` points directly under `/etc` instead of `/etc/xdg`.
+!!! notes
+    - Unix is the only system that utilizes `local` argument on
+      `getSiteDataDir` method.
+    - `roaming` argument on `getUserDataDir` and `getUserConfigDir` has no
+      effect in Unix system.
+    - `appAuthor` argument on every method has no effect in Unix system hence
+      it is not used in the examples.
+    - Unix system uses forward slashes (/) as the directory separator
+    - Instead of [harawata's appdirs](https://github.com/harawata/appdirs),
+      `getSiteConfigDir` points directly under `/etc` instead of `/etc/xdg`.
 
-# What is meant by "Unix"?
+## What is meant by "Unix"?
 
 As in some parts of the document, it is meant *Unix based or inspired* by
 "Unix" in this section. While GNU/Linux is not a true Unix or Unix-based
@@ -49,9 +69,10 @@ system, it is widely meant GNU/Linux system in this section of the whole
 documentation, and, specifically, the ones that utilizes "XDG Base Directory
 Specification".
 
-# What does XDG Base Directory Specification mean?
+## What does XDG Base Directory Specification mean?
 
- > hence the term "XDG-compliant"?
+!!! tip
+    hence the term "XDG-compliant"?
 
 [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)
 is a documentation that builds up a couple of environment variables and
@@ -67,7 +88,7 @@ XDG-compliant, but it does not call the specified environment variables,
 instead it relies on `$HOME` or basic directory structure of most GNU/Linux
 distributions in its `AppDirs` instance methods.
 
-## How can I know a system is XDG-compliant, then?
+### How can I know a system is XDG-compliant, then?
 
 If you've checked out [the documentation](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html),
 you can programmatically check for the specified environment variables via

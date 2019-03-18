@@ -34,6 +34,30 @@ internal class WindowsAppDirs: AppDirs {
         }
     }
 
+    override fun getUserDownloadsDir(): Path {
+        return Paths.get(HOME_DIR, "Downloads")
+    }
+
+    override fun getUserDesktopDir(): Path {
+        return Paths.get(HOME_DIR, "Desktop")
+    }
+
+    override fun getUserDocumentsDir(): Path {
+        return Paths.get(HOME_DIR, "My Documents")
+    }
+
+    override fun getUserMusicDir(): Path {
+        return Paths.get(HOME_DIR, "My Music")
+    }
+
+    override fun getUserPicturesDir(): Path {
+        return Paths.get(HOME_DIR, "My Pictures")
+    }
+
+    override fun getUserVideosDir(): Path {
+        return Paths.get(HOME_DIR, "My Videos")
+    }
+
     override fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String?, local: Boolean): Path {
         return when (appAuthor) {
             null -> Paths.get(PROGRAMDATA, appName, appVersion)

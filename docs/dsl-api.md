@@ -1,5 +1,7 @@
 # DSL API
 
+## Introduction
+
 Kotlin provides many syntactic sugars called DSL API. `kappdirs` contains a DSL
 API as well, which will make your development easier. First, you need to create
 an `AppDir` instance:
@@ -12,10 +14,9 @@ val APP_AUTHOR = "myName" // or related organization name
 val appDir: AppDir = AppDir(APP_NAME, APP_VERSION, APP_AUTHOR)
 ```
 
- > <h4>Warning!</h4>
- >
- > Mind the name `AppDir`. It is a different class located under
- > `io.github.erayerdin.kappdirs.dsl`.
+!!! warning
+    Mind the name `AppDir`. It is a different class located under
+    `io.github.erayerdin.kappdirs.dsl`.
 
 Now you can use DSL API and write/read application files easily. See the
 example:
@@ -35,11 +36,10 @@ system's application user data directory *and* write `Hello, world!` into that
 file. `writeText` is a Kotlin extension for `File` object, to get more info,
 [see official Kotlin documentation](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/java.io.-file/index.html).
 
- > <h4>Note</h4>
- >
- > `root`, `parent` and `file` arguments above are `File` objects instead of
- > `Path` objects in order to make it easier to check presence, permissions
- > and execute IO operations.
+!!! note
+    `root`, `parent` and `file` arguments above are `File` objects instead of
+    `Path` objects in order to make it easier to check presence, permissions
+    and execute IO operations.
 
 You can use methods below inside your `AppDir` instance:
 
@@ -49,6 +49,9 @@ You can use methods below inside your `AppDir` instance:
  - userLog
  - siteData
  - siteConfig
+
+!!! warning
+    There's no DSL API implementation for extra application directories yet.
 
 They use the same arguments, just `"path", "to", "your", "file.txt"`.
 
@@ -85,7 +88,7 @@ appDir {
 }
 ```
 
-## Notes on Presence and Permissions
+## Presence and Permissions
 
 Since different systems has different security implementations, `kappdirs`
 does not try to create or write into the directories or file you have
