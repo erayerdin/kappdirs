@@ -22,7 +22,9 @@ example:
 
 ```kotlin
 appDir {
-    userData("my", "config", "file.txt") { dir, file ->
+    userData("my", "config", "file.txt") { root, parent, file ->
+    // `root` points at root directory of `userData`
+    // `parent` points at the directory which contains the `file`
         file.writeText("Hello, world!")
     }
 }
@@ -35,9 +37,9 @@ file. `writeText` is a Kotlin extension for `File` object, to get more info,
 
  > <h4>Note</h4>
  >
- > `dir` and `file` arguments above are `File` objects instead of `Path`
- > objects in order to make it easier to check presence, permissions and
- > execute IO operations.
+ > `root`, `parent` and `file` arguments above are `File` objects instead of
+ > `Path` objects in order to make it easier to check presence, permissions
+ > and execute IO operations.
 
 You can use methods below inside your `AppDir` instance:
 
@@ -62,8 +64,8 @@ by default) that only has effect on Windows.
 
 ```kotlin
 appDir {
-    userData("bar", "baz.txt", roaming = true) { dir, file ->
-        // here, `file` and `dir` point at specific roaming dir on windows
+    userData("bar", "baz.txt", roaming = true) { root, parent, file ->
+        // here, `root`, `parent` and `file` point at specific roaming dir on windows
     }
     
     // same goes for userConfig
@@ -77,8 +79,8 @@ only has effect on Linux.
 
 ```kotlin
 appDir {
-    siteData("config.txt", local = true) { dir, file ->
-        // here, `file` and `dir` point at `/usr/local`
+    siteData("config.txt", local = true) { root, parent, file ->
+        // here, `root`, `parent` and `file` point under `/usr/local`
     }
 }
 ```
@@ -91,8 +93,8 @@ provided. See the example below:
 
 ```kotlin
 appDirs {
-    userData("save1.txt") { dir, file -> 
-        // `dir` does not exists, nor does `file`
+    userData("save1.txt") { root, parent, file -> 
+        // `root`, `parent` and `file` do not exist.
     }
 }
 ```
@@ -101,8 +103,8 @@ So, you have to check the permissions and create them before you do any IO
 operations.
 
 ```kotlin
-    userData("saves", "save1.txt") { dir, file ->
-        dir.mkdirs() // create directories recursively
+    userData("saves", "save1.txt") { root, parent, file ->
+        parent.mkdirs() // create directories recursively
         
         if (!file.exists()) {
             file.createNewFile()
