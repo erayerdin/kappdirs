@@ -40,6 +40,10 @@ internal class UnixAppDirs: AppDirs {
         return XdgUserDirs.XDG_DESKTOP_DIR.getPath()
     }
 
+    override fun getUserDocumentsDir(): Path {
+        return XdgUserDirs.XDG_DOCUMENTS_DIR.getPath()
+    }
+
     override fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String?, local: Boolean): Path {
         val directories: Array<String> = if (local) {
             arrayOf("usr", "local", "share", appName, appVersion)
@@ -58,7 +62,7 @@ internal class UnixAppDirs: AppDirs {
 private val USER_DIR_CONFIG_FILE = Paths.get(HOME_DIR, ".config", "user-dirs.dirs").toFile()
 
 /**
- * Supported keys and values for XDG-compliant Unix system.
+ * Supported keys and values for XDG-compliant Unix systems.
  */
 private enum class XdgUserDirs(private val defaultPath: Path) {
     XDG_DESKTOP_DIR(Paths.get(HOME_DIR, "Desktop")),

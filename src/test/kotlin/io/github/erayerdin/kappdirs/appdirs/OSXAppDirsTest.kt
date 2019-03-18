@@ -50,6 +50,7 @@ class OSXAppDirsTest {
     @Test
     fun testUserDownloadsDir() {
         assertEquals(
+            LOCALIZATION_FAILURE,
             Paths.get("$home/Downloads"),
             appDirs.getUserDownloadsDir()
         )
@@ -58,7 +59,17 @@ class OSXAppDirsTest {
     @Test
     fun testUserDesktopDir() {
         assertEquals(
+            LOCALIZATION_FAILURE,
             Paths.get("$home/Desktop"),
+            appDirs.getUserDesktopDir()
+        )
+    }
+
+    @Test
+    fun testUserDocumentsDir() {
+        assertEquals(
+            LOCALIZATION_FAILURE,
+            Paths.get("$home/Documents"),
             appDirs.getUserDesktopDir()
         )
     }

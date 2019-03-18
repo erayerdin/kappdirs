@@ -119,6 +119,13 @@ class WindowsAppDirsTest {
     }
 
     @Test
+    fun testUserDocumentsDir() {
+        val dir = appDirs.getUserDownloadsDir()
+        assertTrue(dir.toString().startsWith("$systemDrive\\Users"))
+        assertTrue(dir.toString().endsWith("\\My Documents"))
+    }
+
+    @Test
     fun testSiteConfigDir() {
         testSiteDataDir()
     }

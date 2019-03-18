@@ -57,6 +57,11 @@ interface AppDirs {
     fun getUserDesktopDir(): Path
 
     /**
+     * @return Documents directory of the user.
+     */
+    fun getUserDocumentsDir(): Path
+
+    /**
      * @param appName The name of the application.
      * @param appVersion The version of the application.
      * @param appAuthor The author of the application. You can also use your organization's name.

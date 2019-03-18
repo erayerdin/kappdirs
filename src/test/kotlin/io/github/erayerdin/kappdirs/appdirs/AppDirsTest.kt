@@ -15,6 +15,7 @@ object ImplAppDirs: AppDirs {
 
     override fun getUserDownloadsDir(): Path  = Paths.get("/g")
     override fun getUserDesktopDir(): Path  = Paths.get("/h")
+    override fun getUserDocumentsDir(): Path = Paths.get("/i")
 }
 
 class AppDirsTest {
@@ -59,5 +60,11 @@ class AppDirsTest {
     fun testUserDesktopDir() = assertEquals(
         Paths.get("/h"),
         ImplAppDirs.getUserDesktopDir()
+    )
+
+    @Test
+    fun testUserDocumentsDir() = assertEquals(
+        Paths.get("/i"),
+        ImplAppDirs.getUserDocumentsDir()
     )
 }

@@ -12,6 +12,8 @@ internal val osName = System.getProperty("os.name")?.toLowerCase()
 internal const val appName = "foo"
 internal const val appVersion = "0.1.0"
 
+internal const val LOCALIZATION_FAILURE = "This test probably failed because the target test machine probably is not set to en_US locale."
+
 class UnixAppDirsTest {
     companion object {
         val appDirs: AppDirs = UnixAppDirs()
@@ -59,6 +61,7 @@ class UnixAppDirsTest {
     @Test
     fun testUserDownloadsDir() {
         assertEquals(
+            LOCALIZATION_FAILURE,
             Paths.get("$home/Downloads"),
             appDirs.getUserDownloadsDir()
         )
@@ -67,7 +70,17 @@ class UnixAppDirsTest {
     @Test
     fun testUserDesktopDir() {
         assertEquals(
+            LOCALIZATION_FAILURE,
             Paths.get("$home/Desktop"),
+            appDirs.getUserDesktopDir()
+        )
+    }
+
+    @Test
+    fun testUserDocumentsDir() {
+        assertEquals(
+            LOCALIZATION_FAILURE,
+            Paths.get("$home/Documents"),
             appDirs.getUserDesktopDir()
         )
     }
