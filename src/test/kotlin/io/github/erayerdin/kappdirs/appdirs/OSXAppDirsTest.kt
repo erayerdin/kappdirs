@@ -48,6 +48,14 @@ class OSXAppDirsTest {
     }
 
     @Test
+    fun testUserDownloadsDir() {
+        assertEquals(
+            Paths.get("$home/Downloads"),
+            appDirs.getUserDownloadsDir()
+        )
+    }
+
+    @Test
     fun testSiteDataDir() {
         assertEquals(
             Paths.get("/Library/Application Support/foo/0.1.0"),

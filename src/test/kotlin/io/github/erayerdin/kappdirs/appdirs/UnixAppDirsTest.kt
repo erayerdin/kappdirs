@@ -57,6 +57,14 @@ class UnixAppDirsTest {
     }
 
     @Test
+    fun testUserDownloadsDir() {
+        assertEquals(
+            Paths.get("$home/Downloads"),
+            appDirs.getUserDownloadsDir()
+        )
+    }
+
+    @Test
     fun testLocalSiteDataDir() {
         assertEquals(
             Paths.get("/usr/local/share/foo/0.1.0"),
