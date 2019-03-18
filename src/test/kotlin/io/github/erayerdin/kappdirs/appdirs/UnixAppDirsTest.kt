@@ -81,7 +81,7 @@ class UnixAppDirsTest {
         assertEquals(
             LOCALIZATION_FAILURE,
             Paths.get("$home/Documents"),
-            appDirs.getUserDesktopDir()
+            appDirs.getUserDocumentsDir()
         )
     }
 
