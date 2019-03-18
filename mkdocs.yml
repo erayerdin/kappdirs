@@ -1,7 +1,34 @@
 site_name: kappdirs
 site_author: Eray Erdin
 site_url: https://github.com/erayerdin/kappdirs
-theme: readthedocs
+repo_name: erayerdin/kappdirs
+repo_url: https://github.com/erayerdin/kappdirs
+
+theme:
+  name: material
+  palette:
+    primary: orange
+    accent: orange
+
+extra:
+  social:
+    - type: github
+      link: https://github.com/erayerdin
+    - type: twitter
+      link: https://twitter.com/_erayerdin
+    - type: linkedin
+      link: https://linkedin.com/in/erayerdin
+    - type: telegram
+      link: https://t.me/erayerdin
+  disqus: erayerdin
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - footnotes
 
 nav:
   - Introduction: index.md

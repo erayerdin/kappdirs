@@ -13,6 +13,12 @@ object ImplAppDirs: AppDirs {
     override fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String?, local: Boolean): Path = Paths.get("/e")
     override fun getSiteConfigDir(appName: String, appVersion: String, appAuthor: String?): Path = Paths.get("/f")
 
+    override fun getUserDownloadsDir(): Path  = Paths.get("/g")
+    override fun getUserDesktopDir(): Path  = Paths.get("/h")
+    override fun getUserDocumentsDir(): Path = Paths.get("/i")
+    override fun getUserMusicDir(): Path = Paths.get("/j")
+    override fun getUserPicturesDir(): Path = Paths.get("/k")
+    override fun getUserVideosDir(): Path = Paths.get("/l")
 }
 
 class AppDirsTest {
@@ -45,5 +51,41 @@ class AppDirsTest {
     fun testSiteConfigDir() = assertEquals(
         Paths.get("/f"),
         ImplAppDirs.getSiteConfigDir("foo", "0.1.0", "eray")
+    )
+
+    @Test
+    fun testUserDownloadsDir() = assertEquals(
+        Paths.get("/g"),
+        ImplAppDirs.getUserDownloadsDir()
+    )
+
+    @Test
+    fun testUserDesktopDir() = assertEquals(
+        Paths.get("/h"),
+        ImplAppDirs.getUserDesktopDir()
+    )
+
+    @Test
+    fun testUserDocumentsDir() = assertEquals(
+        Paths.get("/i"),
+        ImplAppDirs.getUserDocumentsDir()
+    )
+
+    @Test
+    fun testUserMusicDir() = assertEquals(
+        Paths.get("/j"),
+        ImplAppDirs.getUserMusicDir()
+    )
+
+    @Test
+    fun testUserPicturesDir() = assertEquals(
+        Paths.get("/k"),
+        ImplAppDirs.getUserPicturesDir()
+    )
+
+    @Test
+    fun testUserVideosDir() = assertEquals(
+        Paths.get("/l"),
+        ImplAppDirs.getUserVideosDir()
     )
 }

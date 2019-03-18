@@ -105,6 +105,48 @@ class WindowsAppDirsTest {
     }
 
     @Test
+    fun testUserDownloadsDir() {
+        val dir = appDirs.getUserDownloadsDir()
+        assertTrue(dir.toString().startsWith("$systemDrive\\Users"))
+        assertTrue(dir.toString().endsWith("\\Downloads"))
+    }
+
+    @Test
+    fun testUserDesktopDir() {
+        val dir = appDirs.getUserDesktopDir()
+        assertTrue(dir.toString().startsWith("$systemDrive\\Users"))
+        assertTrue(dir.toString().endsWith("\\Desktop"))
+    }
+
+    @Test
+    fun testUserDocumentsDir() {
+        val dir = appDirs.getUserDocumentsDir()
+        assertTrue(dir.toString().startsWith("$systemDrive\\Users"))
+        assertTrue(dir.toString().endsWith("\\My Documents"))
+    }
+
+    @Test
+    fun testUserMusicDir() {
+        val dir = appDirs.getUserMusicDir()
+        assertTrue(dir.toString().startsWith("$systemDrive\\Users"))
+        assertTrue(dir.toString().endsWith("\\My Music"))
+    }
+
+    @Test
+    fun testUserPicturesDir() {
+        val dir = appDirs.getUserPicturesDir()
+        assertTrue(dir.toString().startsWith("$systemDrive\\Users"))
+        assertTrue(dir.toString().endsWith("\\My Pictures"))
+    }
+
+    @Test
+    fun testUserVideosDir() {
+        val dir = appDirs.getUserVideosDir()
+        assertTrue(dir.toString().startsWith("$systemDrive\\Users"))
+        assertTrue(dir.toString().endsWith("\\My Videos"))
+    }
+
+    @Test
     fun testSiteConfigDir() {
         testSiteDataDir()
     }

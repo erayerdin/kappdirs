@@ -1,4 +1,4 @@
-# kappdirs
+# Introduction
 
 [![JitPack](https://img.shields.io/jitpack/v/erayerdin/kappdirs.svg?label=version&logo=kotlin&logoColor=ffffff&style=flat-square)][jitpack_url]
 ![License](https://img.shields.io/badge/license-Apache%20License%203.0-cccccc.svg?style=flat-square)
@@ -11,17 +11,17 @@ kappdirs is an appdirs implementation written in pure Kotlin. It has a similar
 implementation of [harawata's appdirs][haratawa_appdirs]
 and inspired by that project.
 
-# Features
+## Features
 
  - Supporting Mac OS X, Unix based or inspired systems including most popular
  Linux distributions and Windows
  - A standard API and a DSL API that makes it quite easier
 
-# Installation
+## Installation
 
 You can get installation instruction from [Jitpack][jitpack_url].
 
-# A Brief Introduction
+## A Brief Introduction
 
 You can grab an instance of `AppDirs` as below:
 
@@ -34,8 +34,7 @@ val appData: Path = appDirs.getUserDataDir("myApp", "0.1.0", "myName")
 operating system and then you can use one of its methods to get `Path`
 instance.
 
- > <h4>Note</h4>
- >
- > An `AppDirs` instance is created lazily, which means it is created by
- > `AppDirsFactory` only once and when `getInstance` called and later on
- > you get the reference to the same object.
+!!! note
+    An `AppDirs` instance is created lazily, which means it is created by
+    `AppDirsFactory` only once and when `getInstance` called and later on
+    you get the reference to the same object.
