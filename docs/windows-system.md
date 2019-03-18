@@ -1,4 +1,6 @@
-# AppDirs Instance Methods
+# Windows System
+
+## AppDirs Instance Methods
 
 In a Windows machine, following `AppDirs` methods point at the directories
 below:
@@ -24,6 +26,23 @@ val userRoamingConfigDir: Path = appDirs.getUserConfigDir(APP_NAME, APP_VERSION,
 val userCacheDir: Path = appDirs.getUserCacheDir(APP_NAME, APP_VERSION, APP_AUTHOR)
 // C:\Users\<username>\AppData\Local\myName\myApp\Cache\0.1.0
 
+val userDownloadsDir: Path = appDirs.getUserDownloadsDir()
+// C:\Users\<username>\Downloads
+
+val userDesktopDir: Path = appDirs.getUserDesktopDir()
+// C:\Users\<username>\Desktop
+
+val userDocumentsDir: Path = appDirs.getUserDocumentsDir()
+// C:\Users\<username>\My Documents
+val userMusicDir: Path = appDirs.getUserMusicDir()
+// C:\Users\<username>\My Music
+
+val userPicturesDir: Path = appDirs.getUserPicturesDir()
+// C:\Users\<username>\My Pictures
+
+val userVideosDir: Path = appDirs.getUserVideosDir()
+// C:\Users\<username>\My Videos
+
 val userLogDir: Path = appDirs.getUserLogDir(APP_NAME, APP_VERSION, APP_AUTHOR)
 // C:\Users\<username>\AppData\Local\myName\myApp\Logs\0.1.0
 
@@ -34,46 +53,33 @@ val siteConfigDir: Path = appdirs.getSiteConfigDir(APP_NAME, APP_VERSION, APP_AU
 // C:\ProgramData\myName\myApp\0.1.0
 ```
 
- > <h4>Notes</h4>
- >
- > - `getUserDataDir` and `getUserConfigDir` without `roaming` or with
- >   `roaming` is `false` point at the same directory. (See `userLocalDataDir`
- >   and `userLocalConfigDir` above.)
- > - `getUserDataDir` and `getUserConfigDir` with `roaming` is `true` point
- >   at the same directory. (See `userRoamingDataDir` and
- >   `userRoamingConfigDir` above.)
- > - `getSiteDataDir` and `getSiteConfigDir` (with or without `local`
- >   argument) point at the same directory. (See `siteDataDir` and
- >   `siteConfigDir` above.)
- > - `local` argument on `getSiteDataDir` and `getSiteConfigDir` has no
- >   effect on Windows machines.
- > - Windows is the only system that utilizes `roaming` argument on
- >   `getUserDataDir` and `getUserConfigDir` methods.
- > - `local` argument on `getSiteDataDir` and `getSiteConfigDir` has no effect
- >   in Windows system.
- > - Windows is the only system that utilizes `appAuthor` on every method.
- > - Windows system is the only system that uses backward slashes (\\) as
- >   the directory separator.
- 
-## Note on `appAuthor`
+!!! notes
+    - `getUserDataDir` and `getUserConfigDir` without `roaming` or with
+      `roaming` is `false` point at the same directory. (See `userLocalDataDir`
+      and `userLocalConfigDir` above.)
+    - `getUserDataDir` and `getUserConfigDir` with `roaming` is `true` point
+      at the same directory. (See `userRoamingDataDir` and
+      `userRoamingConfigDir` above.)
+    - `getSiteDataDir` and `getSiteConfigDir` (with or without `local`
+      argument) point at the same directory. (See `siteDataDir` and
+      `siteConfigDir` above.)
+    - `local` argument on `getSiteDataDir` and `getSiteConfigDir` has no
+      effect on Windows machines.
+    - Windows is the only system that utilizes `roaming` argument on
+      `getUserDataDir` and `getUserConfigDir` methods.
+    - `local` argument on `getSiteDataDir` and `getSiteConfigDir` has no effect
+      in Windows system.
+    - Windows is the only system that utilizes `appAuthor` on every method[^1].
+    - Windows system is the only system that uses backward slashes (\\) as
+      the directory separator.
 
-Windows is the only system that uses `appAuthor` argument. That's why, in all
-`AppDirs` instance methods' signatures, it is marked as `String?` and defaults
-to `null`.
+[^1]:
+    `appAuthor` argument, in all `AppDirs` instance methods' signatures, it is
+    marked as `String?` and defaults to `null` and since it is `null` by
+    default, you do not have to pass `appAuthor`. In this case, `appAuthor` will
+    not be rendered in the end result.
 
-Since it is `null` by default, you do not have to pass `appAuthor`. In this
-case, `appAuthor` will not be rendered to `Path` instance. See the examples
-below and compare them:
-
-```kotlin
-val userLocalDataDirWithAppAuthor: Path = appDirs.getUserDataDir(APP_NAME, APP_VERSION, APP_AUTHOR)
-// C:\Users\<username>\AppData\Local\myName\myApp\0.1.0
-
-val userLocalDataDirWithAppAuthor: Path = appDirs.getUserDataDir(APP_NAME, APP_VERSION)
-// C:\Users\<username>\AppData\Local\myApp\0.1.0
-```
-
-# What is Roaming?
+## What is Roaming?
 
 Since Windows NT 3.1, Windows system uses a concept called *roaming*, which
 moves or copies the content of the related application directory over the
