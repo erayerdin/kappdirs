@@ -13,40 +13,45 @@ data class AppDir(
 ) {
     private val appDirs: AppDirs = AppDirsFactory.getInstance()
 
-    private fun invokeLambda(realPath: Path, method: (dir: File, file: File) -> Unit) {
+    private fun invokeLambda(rootPath: Path, realPath: Path, method: (root: File, parent: File, file: File) -> Unit) {
         val file = realPath.toFile()
-        val dir = File(file, "..")
-        method(dir, file)
+        method(rootPath.toFile(), file.parentFile, file)
     }
 
-    fun userData(vararg path: String, roaming: Boolean = false, method: (dir: File, file: File) -> Unit) {
-        val realPath = appDirs.getUserDataDir(appName, appVersion, appAuthor, roaming).resolve(path)
-        invokeLambda(realPath, method)
+    fun userData(vararg path: String, roaming: Boolean = false, method: (root: File, parent: File, file: File) -> Unit) {
+        val rootPath = appDirs.getUserDataDir(appName, appVersion, appAuthor, roaming)
+        val realPath = rootPath.resolve(path)
+        invokeLambda(rootPath, realPath, method)
     }
 
-    fun userConfig(vararg path: String, roaming: Boolean = false, method: (dir: File, file: File) -> Unit) {
-        val realPath = appDirs.getUserConfigDir(appName, appVersion, appAuthor, roaming).resolve(path)
-        invokeLambda(realPath, method)
+    fun userConfig(vararg path: String, roaming: Boolean = false, method: (root: File, parent: File, file: File) -> Unit) {
+        val rootPath = appDirs.getUserConfigDir(appName, appVersion, appAuthor, roaming)
+        val realPath = rootPath.resolve(path)
+        invokeLambda(rootPath, realPath, method)
     }
 
-    fun userCache(vararg path: String, method: (dir: File, file: File) -> Unit) {
-        val realPath = appDirs.getUserCacheDir(appName, appVersion, appAuthor).resolve(path)
-        invokeLambda(realPath, method)
+    fun userCache(vararg path: String, method: (root: File, parent: File, file: File) -> Unit) {
+        val rootPath = appDirs.getUserCacheDir(appName, appVersion, appAuthor)
+        val realPath = rootPath.resolve(path)
+        invokeLambda(rootPath, realPath, method)
     }
 
-    fun userLog(vararg path: String, method: (dir: File, file: File) -> Unit) {
-        val realPath = appDirs.getUserLogDir(appName, appVersion, appAuthor).resolve(path)
-        invokeLambda(realPath, method)
+    fun userLog(vararg path: String, method: (root: File, parent: File, file: File) -> Unit) {
+        val rootPath = appDirs.getUserLogDir(appName, appVersion, appAuthor)
+        val realPath = rootPath.resolve(path)
+        invokeLambda(rootPath, realPath, method)
     }
 
-    fun siteData(vararg path: String, local: Boolean = false, method: (dir: File, file: File) -> Unit) {
-        val realPath = appDirs.getSiteDataDir(appName, appVersion, appAuthor, local).resolve(path)
-        invokeLambda(realPath, method)
+    fun siteData(vararg path: String, local: Boolean = false, method: (root: File, parent: File, file: File) -> Unit) {
+        val rootPath = appDirs.getSiteDataDir(appName, appVersion, appAuthor, local)
+        val realPath = rootPath.resolve(path)
+        invokeLambda(rootPath, realPath, method)
     }
 
-    fun siteConfig(vararg path: String, method: (dir: File, file: File) -> Unit) {
-        val realPath = appDirs.getSiteConfigDir(appName, appVersion, appAuthor).resolve(path)
-        invokeLambda(realPath, method)
+    fun siteConfig(vararg path: String, method: (root: File, parent: File, file: File) -> Unit) {
+        val rootPath = appDirs.getSiteConfigDir(appName, appVersion, appAuthor)
+        val realPath = rootPath.resolve(path)
+        invokeLambda(rootPath, realPath, method)
     }
 
     operator fun invoke(method: AppDir.() -> Unit) {
