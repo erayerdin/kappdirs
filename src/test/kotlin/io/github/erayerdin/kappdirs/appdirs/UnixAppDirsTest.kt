@@ -95,6 +95,15 @@ class UnixAppDirsTest {
     }
 
     @Test
+    fun testUserPicturesDir() {
+        assertEquals(
+            LOCALIZATION_FAILURE,
+            Paths.get("$home/Pictures"),
+            appDirs.getUserPicturesDir()
+        )
+    }
+
+    @Test
     fun testLocalSiteDataDir() {
         assertEquals(
             Paths.get("/usr/local/share/foo/0.1.0"),

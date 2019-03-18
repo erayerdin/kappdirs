@@ -84,6 +84,15 @@ class OSXAppDirsTest {
     }
 
     @Test
+    fun testUserPicturesDir() {
+        assertEquals(
+            LOCALIZATION_FAILURE,
+            Paths.get("$home/Pictures"),
+            appDirs.getUserPicturesDir()
+        )
+    }
+
+    @Test
     fun testSiteDataDir() {
         assertEquals(
             Paths.get("/Library/Application Support/foo/0.1.0"),

@@ -133,6 +133,13 @@ class WindowsAppDirsTest {
     }
 
     @Test
+    fun testUserPicturesDir() {
+        val dir = appDirs.getUserPicturesDir()
+        assertTrue(dir.toString().startsWith("$systemDrive\\Users"))
+        assertTrue(dir.toString().endsWith("\\My Pictures"))
+    }
+
+    @Test
     fun testSiteConfigDir() {
         testSiteDataDir()
     }
