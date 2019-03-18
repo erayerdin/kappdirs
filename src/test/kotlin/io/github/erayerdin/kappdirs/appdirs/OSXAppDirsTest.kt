@@ -75,6 +75,15 @@ class OSXAppDirsTest {
     }
 
     @Test
+    fun testUserMusicDir() {
+        assertEquals(
+            LOCALIZATION_FAILURE,
+            Paths.get("$home/Music"),
+            appDirs.getUserMusicDir()
+        )
+    }
+
+    @Test
     fun testSiteDataDir() {
         assertEquals(
             Paths.get("/Library/Application Support/foo/0.1.0"),

@@ -113,16 +113,23 @@ class WindowsAppDirsTest {
 
     @Test
     fun testUserDesktopDir() {
-        val dir = appDirs.getUserDownloadsDir()
+        val dir = appDirs.getUserDesktopDir()
         assertTrue(dir.toString().startsWith("$systemDrive\\Users"))
         assertTrue(dir.toString().endsWith("\\Desktop"))
     }
 
     @Test
     fun testUserDocumentsDir() {
-        val dir = appDirs.getUserDownloadsDir()
+        val dir = appDirs.getUserDocumentsDir()
         assertTrue(dir.toString().startsWith("$systemDrive\\Users"))
         assertTrue(dir.toString().endsWith("\\My Documents"))
+    }
+
+    @Test
+    fun testUserMusicDir() {
+        val dir = appDirs.getUserMusicDir()
+        assertTrue(dir.toString().startsWith("$systemDrive\\Users"))
+        assertTrue(dir.toString().endsWith("\\My Music"))
     }
 
     @Test

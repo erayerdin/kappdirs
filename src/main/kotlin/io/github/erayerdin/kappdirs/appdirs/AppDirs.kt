@@ -62,6 +62,11 @@ interface AppDirs {
     fun getUserDocumentsDir(): Path
 
     /**
+     * @return Music directory of the user.
+     */
+    fun getUserMusicDir(): Path
+
+    /**
      * @param appName The name of the application.
      * @param appVersion The version of the application.
      * @param appAuthor The author of the application. You can also use your organization's name.

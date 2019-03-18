@@ -44,6 +44,10 @@ internal class UnixAppDirs: AppDirs {
         return XdgUserDirs.XDG_DOCUMENTS_DIR.getPath()
     }
 
+    override fun getUserMusicDir(): Path {
+        return XdgUserDirs.XDG_MUSIC_DIR.getPath()
+    }
+
     override fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String?, local: Boolean): Path {
         val directories: Array<String> = if (local) {
             arrayOf("usr", "local", "share", appName, appVersion)
