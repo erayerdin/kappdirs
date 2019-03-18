@@ -93,6 +93,15 @@ class OSXAppDirsTest {
     }
 
     @Test
+    fun testUserVideosDir() {
+        assertEquals(
+            LOCALIZATION_FAILURE,
+            Paths.get("$home/Videos"),
+            appDirs.getUserVideosDir()
+        )
+    }
+
+    @Test
     fun testSiteDataDir() {
         assertEquals(
             Paths.get("/Library/Application Support/foo/0.1.0"),

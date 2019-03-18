@@ -52,6 +52,10 @@ internal class UnixAppDirs: AppDirs {
         return XdgUserDirs.XDG_PICTURES_DIR.getPath()
     }
 
+    override fun getUserVideosDir(): Path {
+        return XdgUserDirs.XDG_VIDEOS_DIR.getPath() // XDG_VIDEOS ( ͡° ͜ʖ ͡°)
+    }
+
     override fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String?, local: Boolean): Path {
         val directories: Array<String> = if (local) {
             arrayOf("usr", "local", "share", appName, appVersion)

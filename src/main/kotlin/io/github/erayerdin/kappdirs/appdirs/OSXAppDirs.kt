@@ -54,6 +54,11 @@ internal class OSXAppDirs: AppDirs {
         return Paths.get(HOME_DIR, "Pictures")
     }
 
+    override fun getUserVideosDir(): Path {
+        // todo 1 - implement localized directories later on
+        return Paths.get(HOME_DIR, "Videos")
+    }
+
     override fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String?, local: Boolean): Path {
         return Paths.get(
             "/",

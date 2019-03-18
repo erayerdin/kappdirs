@@ -72,6 +72,11 @@ interface AppDirs {
     fun getUserPicturesDir(): Path
 
     /**
+     * @return Videos directory of the user.
+     */
+    fun getUserVideosDir(): Path
+
+    /**
      * @param appName The name of the application.
      * @param appVersion The version of the application.
      * @param appAuthor The author of the application. You can also use your organization's name.
