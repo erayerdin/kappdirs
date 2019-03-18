@@ -34,6 +34,11 @@ internal class OSXAppDirs: AppDirs {
         return Paths.get(HOME_DIR, "Downloads")
     }
 
+    override fun getUserDesktopDir(): Path {
+        // todo 1 - implement localized directories later on
+        return Paths.get(HOME_DIR, "Desktop")
+    }
+
     override fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String?, local: Boolean): Path {
         return Paths.get(
             "/",

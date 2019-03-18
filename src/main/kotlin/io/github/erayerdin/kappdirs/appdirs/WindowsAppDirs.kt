@@ -38,6 +38,10 @@ internal class WindowsAppDirs: AppDirs {
         return Paths.get(HOME_DIR, "Downloads")
     }
 
+    override fun getUserDesktopDir(): Path {
+        return Paths.get(HOME_DIR, "Desktop")
+    }
+
     override fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String?, local: Boolean): Path {
         return when (appAuthor) {
             null -> Paths.get(PROGRAMDATA, appName, appVersion)

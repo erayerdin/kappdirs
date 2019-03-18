@@ -36,6 +36,10 @@ internal class UnixAppDirs: AppDirs {
         return XdgUserDirs.XDG_DOWNLOAD_DIR.getPath()
     }
 
+    override fun getUserDesktopDir(): Path {
+        return XdgUserDirs.XDG_DESKTOP_DIR.getPath()
+    }
+
     override fun getSiteDataDir(appName: String, appVersion: String, appAuthor: String?, local: Boolean): Path {
         val directories: Array<String> = if (local) {
             arrayOf("usr", "local", "share", appName, appVersion)
@@ -53,6 +57,9 @@ internal class UnixAppDirs: AppDirs {
 
 private val USER_DIR_CONFIG_FILE = Paths.get(HOME_DIR, ".config", "user-dirs.dirs").toFile()
 
+/**
+ * Supported keys and values for XDG-compliant Unix system.
+ */
 private enum class XdgUserDirs(private val defaultPath: Path) {
     XDG_DESKTOP_DIR(Paths.get(HOME_DIR, "Desktop")),
     XDG_DOWNLOAD_DIR(Paths.get(HOME_DIR, "Downloads")),
@@ -61,8 +68,14 @@ private enum class XdgUserDirs(private val defaultPath: Path) {
     XDG_PICTURES_DIR(Paths.get(HOME_DIR, "Pictures")),
     XDG_VIDEOS_DIR(Paths.get(HOME_DIR, "Videos"));
 
+    /**
+     * A property which holds lazy value which will not change on runtime once initialized.
+     */
     private var path: Path? = null
 
+    /**
+     * @return Path for the enum key.
+     */
     fun getPath(): Path {
         if (path != null) {
             return path as Path
@@ -88,6 +101,11 @@ private enum class XdgUserDirs(private val defaultPath: Path) {
         return path as Path
     }
 
+    /**
+     * Reads and parses line from the XDG app dirs configurations file.
+     *
+     * @return Path of key in the configuration file.
+     */
     private fun parsePathFromLine(line: String): Path {
         var value: String = line.split('=')[1]
 

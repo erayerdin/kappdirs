@@ -65,6 +65,14 @@ class UnixAppDirsTest {
     }
 
     @Test
+    fun testUserDesktopDir() {
+        assertEquals(
+            Paths.get("$home/Desktop"),
+            appDirs.getUserDesktopDir()
+        )
+    }
+
+    @Test
     fun testLocalSiteDataDir() {
         assertEquals(
             Paths.get("/usr/local/share/foo/0.1.0"),

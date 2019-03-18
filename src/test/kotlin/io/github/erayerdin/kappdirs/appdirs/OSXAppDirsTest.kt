@@ -56,6 +56,14 @@ class OSXAppDirsTest {
     }
 
     @Test
+    fun testUserDesktopDir() {
+        assertEquals(
+            Paths.get("$home/Desktop"),
+            appDirs.getUserDesktopDir()
+        )
+    }
+
+    @Test
     fun testSiteDataDir() {
         assertEquals(
             Paths.get("/Library/Application Support/foo/0.1.0"),
