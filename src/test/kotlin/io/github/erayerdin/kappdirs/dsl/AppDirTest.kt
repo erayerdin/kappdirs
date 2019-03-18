@@ -1,5 +1,6 @@
 package io.github.erayerdin.kappdirs.dsl
 
+import io.github.erayerdin.kappdirs.AppDirsFactory
 import io.github.erayerdin.kappdirs.appdirs.osName
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -22,10 +23,25 @@ class AppDirTest {
     }
 
     @Test
+    fun testRoot() {
+        val dir = AppDirsFactory.getInstance().getUserDataDir(
+            appDir.appName,
+            appDir.appVersion,
+            appDir.appAuthor
+        ).toFile()
+
+        appDir {
+            userData("bar.txt") { root, parent, file ->
+                assertEquals(dir, root)
+            }
+        }
+    }
+
+    @Test
     fun testUserData() {
         appDir {
-            userData("bar", "baz.txt") { dir, file ->
-                assertReadWriteOperations(dir, file)
+            userData("bar", "baz.txt") { root, parent, file ->
+                assertReadWriteOperations(parent, file)
             }
         }
     }
@@ -37,8 +53,8 @@ class AppDirTest {
         }
 
         appDir {
-            userData("bar", "baz.txt", roaming = true) { dir, file ->
-                assertReadWriteOperations(dir, file)
+            userData("bar", "baz.txt", roaming = true) { root, parent, file ->
+                assertReadWriteOperations(parent, file)
             }
         }
     }
@@ -46,8 +62,8 @@ class AppDirTest {
     @Test
     fun testUserConfig() {
         appDir {
-            userConfig("bar", "baz.txt") { dir, file ->
-                assertReadWriteOperations(dir, file)
+            userConfig("bar", "baz.txt") { root, parent, file ->
+                assertReadWriteOperations(parent, file)
             }
         }
     }
@@ -59,8 +75,8 @@ class AppDirTest {
         }
 
         appDir {
-            userConfig("bar", "baz.txt", roaming = true) { dir, file ->
-                assertReadWriteOperations(dir, file)
+            userConfig("bar", "baz.txt", roaming = true) { root, parent, file ->
+                assertReadWriteOperations(parent, file)
             }
         }
     }
@@ -68,8 +84,8 @@ class AppDirTest {
     @Test
     fun testUserCache() {
         appDir {
-            userCache("bar", "baz.txt") { dir, file ->
-                assertReadWriteOperations(dir, file)
+            userCache("bar", "baz.txt") { root, parent, file ->
+                assertReadWriteOperations(parent, file)
             }
         }
     }
@@ -77,8 +93,8 @@ class AppDirTest {
     @Test
     fun testUserLog() {
         appDir {
-            userLog("bar", "baz.txt") { dir, file ->
-                assertReadWriteOperations(dir, file)
+            userLog("bar", "baz.txt") { root, parent, file ->
+                assertReadWriteOperations(parent, file)
             }
         }
     }
