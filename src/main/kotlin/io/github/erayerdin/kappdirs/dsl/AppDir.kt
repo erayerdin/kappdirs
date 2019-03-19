@@ -60,6 +60,12 @@ data class AppDir(
         invokeLambda(rootPath, realPath, method)
     }
 
+    fun userMusic(vararg path: String, method: (root: File, parent: File, file: File) -> Unit) {
+        val rootPath = appDirs.getUserMusicDir()
+        val realPath = rootPath.resolve(path)
+        invokeLambda(rootPath, realPath, method)
+    }
+
     fun siteData(vararg path: String, local: Boolean = false, method: (root: File, parent: File, file: File) -> Unit) {
         val rootPath = appDirs.getSiteDataDir(appName, appVersion, appAuthor, local)
         val realPath = rootPath.resolve(path)
