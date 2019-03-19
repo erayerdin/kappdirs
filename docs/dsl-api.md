@@ -43,15 +43,18 @@ file. `writeText` is a Kotlin extension for `File` object, to get more info,
 
 You can use methods below inside your `AppDir` instance:
 
- - userData
- - userConfig
- - userCache
- - userLog
- - siteData
- - siteConfig
-
-!!! warning
-    There's no DSL API implementation for extra application directories yet.
+ - `userData`
+ - `userConfig`
+ - `userConfig`
+ - `userLog`
+ - `userDownloads`
+ - `userDesktop`
+ - `userDocuments`
+ - `userMusic`
+ - `userPictures`
+ - `userVideos`
+ - `siteData`
+ - `siteConfig`
 
 They use the same arguments, just `"path", "to", "your", "file.txt"`.
 
@@ -88,14 +91,14 @@ appDir {
 }
 ```
 
-## Presence and Permissions
+## On Presence and Permissions
 
 Since different systems has different security implementations, `kappdirs`
 does not try to create or write into the directories or file you have
 provided. See the example below:
 
 ```kotlin
-appDirs {
+appDir {
     userData("save1.txt") { root, parent, file -> 
         // `root`, `parent` and `file` do not exist.
     }
@@ -106,6 +109,7 @@ So, you have to check the permissions and create them before you do any IO
 operations.
 
 ```kotlin
+appDir {
     userData("saves", "save1.txt") { root, parent, file ->
         parent.mkdirs() // create directories recursively
         
@@ -115,4 +119,41 @@ operations.
         
         // now do IO-related operations
     }
+}
 ```
+
+## On Extra Application Directories
+
+Methods below are called *Extra Application Directories* since they are not
+directly related to the application:
+
+ - `userDownloads`
+ - `userDesktop`
+ - `userDocuments`
+ - `userMusic`
+ - `userPictures`
+ - `userVideos`
+
+The only thing that you need to know about these methods is that these do
+not utilize `appName`, `appVersion` or `appAuthor` in `AppDir` instance.
+Consider the example:
+
+```kotlin
+appDirs {
+    userDownloads("myApp", "file.txt") { root, parent, file -> 
+        // considering that you are on a unix based/inspired system
+        // and your system locale is set to en_US
+        val rootFilePath: String = root.toString()
+        // /home/<username>/Downloads
+        
+        val parentFilePath: String = parent.toString()
+        // /home/<username>/Downloads/myApp
+        
+        val fileFilePath: String = file.toString()
+        // /home/<username>/Downloads/myApp/file.txt
+    }
+}
+```
+
+It is intended this way because there were no clear conventions about how to
+store files under these directories.

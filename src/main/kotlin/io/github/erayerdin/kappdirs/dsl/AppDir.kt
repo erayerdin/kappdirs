@@ -42,6 +42,42 @@ data class AppDir(
         invokeLambda(rootPath, realPath, method)
     }
 
+    fun userDownloads(vararg path: String, method: (root: File, parent: File, file: File) -> Unit) {
+        val rootPath = appDirs.getUserDownloadsDir()
+        val realPath = rootPath.resolve(path)
+        invokeLambda(rootPath, realPath, method)
+    }
+
+    fun userDesktop(vararg path: String, method: (root: File, parent: File, file: File) -> Unit) {
+        val rootPath = appDirs.getUserDesktopDir()
+        val realPath = rootPath.resolve(path)
+        invokeLambda(rootPath, realPath, method)
+    }
+
+    fun userDocuments(vararg path: String, method: (root: File, parent: File, file: File) -> Unit) {
+        val rootPath = appDirs.getUserDocumentsDir()
+        val realPath = rootPath.resolve(path)
+        invokeLambda(rootPath, realPath, method)
+    }
+
+    fun userMusic(vararg path: String, method: (root: File, parent: File, file: File) -> Unit) {
+        val rootPath = appDirs.getUserMusicDir()
+        val realPath = rootPath.resolve(path)
+        invokeLambda(rootPath, realPath, method)
+    }
+
+    fun userPictures(vararg path: String, method: (root: File, parent: File, file: File) -> Unit) {
+        val rootPath = appDirs.getUserPicturesDir()
+        val realPath = rootPath.resolve(path)
+        invokeLambda(rootPath, realPath, method)
+    }
+
+    fun userVideos(vararg path: String, method: (root: File, parent: File, file: File) -> Unit) {
+        val rootPath = appDirs.getUserVideosDir()
+        val realPath = rootPath.resolve(path)
+        invokeLambda(rootPath, realPath, method)
+    }
+
     fun siteData(vararg path: String, local: Boolean = false, method: (root: File, parent: File, file: File) -> Unit) {
         val rootPath = appDirs.getSiteDataDir(appName, appVersion, appAuthor, local)
         val realPath = rootPath.resolve(path)
