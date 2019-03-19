@@ -135,6 +135,15 @@ class AppDirTest {
         }
     }
 
+    @Test
+    fun testUserPictures() {
+        appDir {
+            userPictures("bar", "baz.txt") { root, parent, file ->
+                assertReadWriteOperations(parent, file)
+            }
+        }
+    }
+
     // todo 1 - find a way to test system level dirs
     // it is especially problematic on unix type systems
 
