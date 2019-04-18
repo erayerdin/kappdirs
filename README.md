@@ -1,6 +1,7 @@
 # kappdirs
 
-[![JitPack](https://img.shields.io/jitpack/v/erayerdin/kappdirs.svg?label=version&logo=kotlin&logoColor=ffffff&style=flat-square)][jitpack_url]
+[![JitPack](https://img.shields.io/jitpack/v/github/erayerdin/kappdirs.svg?label=version&logo=kotlin&logoColor=ffffff&style=flat-square)][jitpack_url]
+[![JitPack](https://img.shields.io/jitpack/dm/github/erayerdin/kappdirs.svg?label=downloads&logo=kotlin&logoColor=ffffff&style=flat-square)][jitpack_url]
 [![License](https://img.shields.io/badge/license-Apache%20License%202.0-cccccc.svg?style=flat-square)](LICENSE.txt)
 [![Telegram](https://img.shields.io/badge/telegram-%40erayerdin-%2332afed.svg?style=flat-square&logo=telegram&logoColor=white)](https://t.me/erayerdin)
 
